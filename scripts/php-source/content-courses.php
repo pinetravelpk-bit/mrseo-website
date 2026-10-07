@@ -1,0 +1,511 @@
+<?php
+/**
+ * MrSEO.pk - Course Page Long-Form Content Library
+ * Original editorial copy for every course landing page.
+ * Each entry targets 900 to 1,400 words.
+ *
+ * Course specs (fee, duration, seats, batch dates) live in
+ * mrseo_get_courses() inside functions.php. Edit them there, once.
+ *
+ * @package MrSEO_PK
+ */
+if(!defined('ABSPATH')) exit;
+
+function mrseo_course_content(string $slug): array {
+    $all = mrseo_course_content_all();
+    return $all[$slug] ?? [];
+}
+
+function mrseo_course_content_all(): array {
+    return [
+
+/* ============================================================
+   COMPLETE DIGITAL MARKETING
+   ============================================================ */
+'digital-marketing' => [
+ 'quick' => 'The complete course covers SEO, paid ads, social media, content and AI tools over sixteen weeks, then places you on a supervised internship working on real client accounts. You finish with a portfolio, a certificate of completion and enough practical work to answer interview questions properly.',
+ 'sections' => [
+
+  ['h2' => 'Why This Course Exists',
+   'html' => <<<'H'
+<p>Most digital marketing courses in Pakistan teach the interface and skip the judgement. You learn where the buttons are in Ads Manager, you pass a quiz, you get a certificate, and then an employer asks why a campaign is spending money without producing enquiries and there is nothing to say.</p>
+<p>This course is taught by someone who has been running search campaigns for Pakistani businesses since 2010 and still does it daily. The material comes out of live client accounts rather than a slide deck bought from abroad. When we talk about what a landing page costs to fix, or how long a clinic in Rawalpindi waits before the map pack moves, those are numbers from actual work.</p>
+<p>The aim is narrow and honest: by the end you should be employable as a junior digital marketer, or able to run marketing for your own business without hiring anyone. Not an expert. Employable. That distinction matters and most course marketing ignores it.</p>
+H],
+
+  ['h2' => 'What the Sixteen Weeks Cover',
+   'html' => <<<'H'
+<p>The course runs in five blocks, each building on the one before.</p>
+<ul>
+<li><strong>Foundations (weeks 1 to 2).</strong> How search, social and paid channels actually fit together. Setting up Analytics, Search Console, Tag Manager and conversion tracking so every later decision has a number behind it.</li>
+<li><strong>Search (weeks 3 to 6).</strong> Keyword research from real data rather than a tool guess, on-page work, technical fundamentals, local SEO and Google Business Profile, link acquisition that will not get a site penalised.</li>
+<li><strong>Paid media (weeks 7 to 9).</strong> Google Search and Performance Max, Meta campaign structure, audience building, budget maths, and reading a report to decide what to switch off.</li>
+<li><strong>Content and social (weeks 10 to 13).</strong> Writing service pages and blog content that ranks, English and Roman Urdu, short-form video for a Pakistani audience, a posting system that survives a busy week.</li>
+<li><strong>AI, reporting and client work (weeks 14 to 16).</strong> Using AI tools to move faster without producing content Google ignores, building a monthly report, pricing your work, and a final live project on a real brief.</li>
+</ul>
+<p>Every block ends with something you keep. An audit document, a campaign build, a content set, a report. By week sixteen that folder is your portfolio, which is the only thing an interviewer will actually look at.</p>
+H],
+
+  ['h2' => 'The Internship',
+   'html' => <<<'H'
+<p>The internship is included at no cost and it is real work, not a certificate we print at the end. You are assigned to live client accounts under supervision, with defined tasks: keyword mapping, on-page fixes, Business Profile work, reporting, social scheduling, ad monitoring.</p>
+<p>Two things worth being clear about. It is unpaid, because the supervision costs us more time than the output saves, and it requires a genuine commitment of around fifteen hours a week. People who treat it as optional get very little from it and we stop assigning them work.</p>
+<p>What it gives you is the thing every junior applicant lacks: a period of employment history where you can name the tasks you did, the tools you used and the results you saw. Interns who do well are the first people we approach when paid work comes up, and several have been placed with clients who needed someone in-house.</p>
+H],
+
+  ['h2' => 'The Certificate, Honestly Described',
+   'html' => <<<'H'
+<p>You receive a certificate of completion issued by MrSEO.pk, plus a written reference covering the internship work if you complete it. It is verifiable, we will confirm it to any employer who asks, and it is free.</p>
+<p>It is not a degree and it is not accredited by HEC, NAVTTC or any government body. Anyone selling you a private course as a government qualification is misleading you. What carries weight with employers is the portfolio and the reference, and we would rather you understood that than pay for a badge.</p>
+<p>We also walk you through the free vendor certifications that do carry name recognition: Google Analytics, Google Ads, HubSpot and Meta Blueprint. Those are worth having and cost nothing but exam time.</p>
+H],
+
+  ['h2' => 'Who This Suits and Who It Does Not',
+   'html' => <<<'H'
+<p>It suits fresh graduates who need employable skills quickly, business owners who are tired of paying agencies for reports they cannot interpret, freelancers who want to add services, and career changers with no technical background.</p>
+<p>It does not suit anyone looking for passive income or overnight results. Marketing is skilled labour. It also does not suit people who cannot commit the hours, because the internship depends on showing up consistently and the portfolio depends on the internship.</p>
+<p>No prior experience is needed. You need a laptop, a reliable internet connection and enough English to read documentation, which is most of what the job involves anyway.</p>
+H],
+
+ ],
+ 'faqs' => [
+  ['q'=>'Is the internship really free?','a'=>'Yes. The internship is included in the course fee and there is no separate charge for it. It is also unpaid, meaning you are not earning a salary during it. You are working on live client accounts under supervision, which is the point of it, and it runs for eight weeks at roughly fifteen hours per week.'],
+  ['q'=>'Will I get a job after this course?','a'=>'We cannot promise a job and we do not. What we can do is make you employable: a real portfolio, a reference covering supervised client work, and interview preparation. Students who complete the internship properly and apply consistently generally find junior roles or freelance clients. Students who skip the internship usually do not.'],
+  ['q'=>'Is the certificate government approved?','a'=>'No. It is a certificate of completion issued by MrSEO.pk, verifiable on request, and it is not accredited by HEC or NAVTTC. We say this plainly because some institutes imply otherwise. Employers in this field hire on portfolio and practical ability, and we build both during the course.'],
+  ['q'=>'Can I attend online from another city?','a'=>'Yes. Classes run live online as well as on-site at our Scheme 3 office in Rawalpindi, which is a short drive from most of Islamabad, and recordings are available if you miss one. The internship is done remotely for out-of-city students, with the same supervision and the same weekly check-ins.'],
+  ['q'=>'Do I need a background in IT or marketing?','a'=>'No. The course starts from zero and the first two weeks are deliberately slow. What you do need is a laptop, a stable connection, and the ability to read and write English at a working level, since most tools and documentation are in English.'],
+  ['q'=>'What if I fall behind or miss classes?','a'=>'Every session is recorded and you keep access. If you fall behind on assignments we will work with you, but the internship placement depends on finishing the coursework, since we are not putting someone on a client account who has not done the work.'],
+ ],
+],
+
+/* ============================================================
+   SEO COURSE
+   ============================================================ */
+'seo' => [
+ 'quick' => 'An eight-week SEO course built around live Pakistani websites rather than theory. You learn technical auditing, keyword research from real search data, on-page work, local SEO and link building, then apply it during a supervised internship on client accounts. Certificate and internship are included.',
+ 'sections' => [
+
+  ['h2' => 'What You Will Actually Be Able to Do',
+   'html' => <<<'H'
+<p>By the end of eight weeks you should be able to take a website you have never seen before, audit it properly, and produce a prioritised list of what to fix and why. That is the skill agencies hire for and it is the skill most course graduates do not have.</p>
+<p>Specifically: crawl a site and interpret the results, read Search Console and identify what is being lost, build a keyword map that assigns every target phrase to one page, write title tags and content briefs that hold up, fix the technical problems that are within your reach and describe the rest accurately to a developer, set up and optimise a Google Business Profile, and build links that will still be there in two years.</p>
+H],
+
+  ['h2' => 'Week by Week',
+   'html' => <<<'H'
+<ul>
+<li><strong>Week 1.</strong> How search works: crawling, indexing, ranking. Setting up Search Console and Analytics. Reading what the data already tells you.</li>
+<li><strong>Week 2.</strong> Keyword research using Search Console, competitor analysis and site search data, not just an international tool that underreports Pakistani volume. Intent classification and keyword mapping.</li>
+<li><strong>Week 3.</strong> On-page: titles, headings, internal links, content structure, and the answer-first format that gets pulled into featured snippets and AI overviews.</li>
+<li><strong>Week 4.</strong> Technical SEO: crawl budget, indexation problems, canonicals, redirects, duplicate content, Core Web Vitals and why page weight matters more on Pakistani mobile connections.</li>
+<li><strong>Week 5.</strong> Structured data and schema, XML sitemaps, robots directives, and hands-on auditing of a live site.</li>
+<li><strong>Week 6.</strong> Local SEO: Google Business Profile setup and categories, citations, review processes, and how the map pack actually decides who appears.</li>
+<li><strong>Week 7.</strong> Link building that survives updates. What to avoid in the Pakistani market, which is most of what is being sold locally.</li>
+<li><strong>Week 8.</strong> Reporting, client communication, pricing your work, and your final audit project on a real site.</li>
+</ul>
+H],
+
+  ['h2' => 'Tools, and Why We Do Not Over-Rely on Them',
+   'html' => <<<'H'
+<p>You will work with Google Search Console, Google Analytics 4, Screaming Frog, Ahrefs or Semrush, PageSpeed Insights, and the schema testing tools. We also cover AI assistants for research and drafting, with clear limits on where they produce content that ranks and where they produce filler.</p>
+<p>The reason we teach data sources before tools is that paid tools are the first thing a new employer may not give you, and their Pakistani keyword data is frequently wrong. Someone who can pull the answer out of Search Console is more useful than someone who can only read an Ahrefs dashboard.</p>
+H],
+
+  ['h2' => 'Internship and Certificate',
+   'html' => <<<'H'
+<p>After the eight weeks you move into a supervised internship on live client accounts, included at no extra cost. You are given real tasks with real deadlines: audits, keyword maps, on-page implementation, Business Profile work, monthly reporting. It is unpaid and it needs roughly twelve to fifteen hours a week for eight weeks.</p>
+<p>You finish with a certificate of completion from MrSEO.pk and a written reference describing the work you did. The certificate is not a government accreditation and we do not present it as one. The reference and the audit documents in your portfolio are what will get you interviews.</p>
+H],
+
+ ],
+ 'faqs' => [
+  ['q'=>'Do I need a website of my own to take this course?','a'=>'No, but it helps. We provide practice sites and live client examples for exercises. If you already run a site, you can use it throughout the course and leave with it in considerably better shape, which several past students have done.'],
+  ['q'=>'Is this course enough to start freelancing?','a'=>'For small local clients, yes, provided you finish the internship. Audits, on-page work and Google Business Profile optimisation are services a competent junior can deliver. Large or competitive accounts need more experience than eight weeks provides, and taking one on too early tends to end badly.'],
+  ['q'=>'Will I need to buy paid SEO tools?','a'=>'Not during the course. We use free tiers and shared access for the paid tools in class exercises. We also teach the free sources properly, since those are what you will have on day one of most jobs in Pakistan.'],
+  ['q'=>'How is this different from free YouTube tutorials?','a'=>'The information is largely available free. What is not available free is a structured order, feedback on your work, and supervised access to live client accounts where mistakes matter. If you have the discipline to self-study and a way to practise on real sites, YouTube is a legitimate route.'],
+  ['q'=>'Does the course cover Urdu and Roman Urdu search?','a'=>'Yes, and in detail, because most international training ignores it. Roman Urdu queries carry real volume in consumer categories and almost no tool reports them accurately. We cover how to find them and when a full Urdu page is worth building.'],
+ ],
+],
+
+/* ============================================================
+   SOCIAL MEDIA MARKETING
+   ============================================================ */
+'social-media-marketing' => [
+ 'quick' => 'A six-week course covering Facebook, Instagram and TikTok for Pakistani audiences: content that performs locally, paid campaign structure in Meta Ads Manager, community management and reporting. Includes a supervised internship on live brand accounts and a certificate of completion.',
+ 'sections' => [
+
+  ['h2' => 'Organic Is Not the Same Job as Paid',
+   'html' => <<<'H'
+<p>Most people who call themselves social media managers in Pakistan do one of two jobs and charge for both. Organic work is content, community and consistency. Paid work is audience structure, creative testing and budget management. They use different skills and different measures of success.</p>
+<p>This course teaches both separately so you know which one a client actually needs. A restaurant with good food and no posting rhythm has an organic problem. A brand with three thousand engaged followers and no sales has a conversion problem that more posts will not fix.</p>
+H],
+
+  ['h2' => 'What the Six Weeks Cover',
+   'html' => <<<'H'
+<ul>
+<li><strong>Week 1.</strong> Platform behaviour in Pakistan: what actually gets reach on Facebook, Instagram and TikTok here, and why imported playbooks underperform. Setting up business accounts and Business Manager properly.</li>
+<li><strong>Week 2.</strong> Content strategy: pillars, formats, a monthly calendar you can actually sustain, and writing captions in English and Roman Urdu that sound like a person.</li>
+<li><strong>Week 3.</strong> Production on a small budget. Shooting and editing short-form video on a phone, Canva and CapCut workflows, and what good enough looks like when the alternative is not posting.</li>
+<li><strong>Week 4.</strong> Meta Ads: campaign objectives, audience building, the pixel and conversion events, creative testing, and reading results without fooling yourself.</li>
+<li><strong>Week 5.</strong> TikTok ads, influencer and creator collaboration, and handling community management including complaints in public.</li>
+<li><strong>Week 6.</strong> Reporting that a client understands, pricing retainers, and a final campaign project on a live brief.</li>
+</ul>
+H],
+
+  ['h2' => 'The Metrics That Matter',
+   'html' => <<<'H'
+<p>A large part of this course is unlearning vanity metrics. Follower count is the number clients ask about and it is close to meaningless on its own. Reach without action is a cost. Engagement rate on a giveaway post tells you people like free things.</p>
+<p>You will learn to report on saves, shares, profile visits, link clicks, message enquiries and cost per result, and to explain to a client why a post with lower likes delivered more revenue. That conversation is most of the job once you are working.</p>
+H],
+
+  ['h2' => 'Internship and Certificate',
+   'html' => <<<'H'
+<p>The included internship puts you on live brand accounts for six weeks under supervision: building calendars, drafting captions, scheduling, responding to comments and messages, and assisting on ad campaigns. It is unpaid and needs around twelve hours a week.</p>
+<p>You leave with a certificate of completion from MrSEO.pk, a reference covering the accounts you worked on, and a portfolio of content and campaign results. The certificate is not government accredited. In social media hiring, the portfolio matters far more than any certificate anyway.</p>
+H],
+
+ ],
+ 'faqs' => [
+  ['q'=>'Do I need an expensive camera or laptop?','a'=>'No. A reasonably recent phone shoots everything this course requires, and most high-performing short-form content in Pakistan is phone-shot. You need a laptop for Ads Manager and scheduling, but it does not need to be powerful.'],
+  ['q'=>'Will I have to spend my own money on ads?','a'=>'Not necessarily. Class exercises use shared demonstration accounts and client budgets. If you want to run your own small test campaign, a few thousand rupees is enough to see how the system behaves, but it is optional.'],
+  ['q'=>'Is TikTok worth learning for Pakistani brands?','a'=>'For consumer categories, yes, and reach there is currently cheaper than Meta for the same audience. For B2B and high-value services it is usually the wrong place to spend time. The course covers how to decide rather than assuming every brand needs every platform.'],
+  ['q'=>'Can I do this course alongside a job?','a'=>'Yes. Classes run in evening slots and are recorded. The internship needs about twelve hours a week, which is manageable alongside work for most people, though it is genuinely a commitment rather than a formality.'],
+  ['q'=>'Does this cover LinkedIn and YouTube?','a'=>'LinkedIn is covered in the final week for B2B and personal branding. YouTube strategy is touched on but it is not the focus, since it is closer to a search discipline than a social one and sits inside the SEO and content courses.'],
+ ],
+],
+
+/* ============================================================
+   AI FOR MARKETING
+   ============================================================ */
+'ai-marketing' => [
+ 'quick' => 'A six-week practical course on using AI tools in real marketing work: research, content drafting, ad creative, image generation, automation and analysis. It focuses on where AI genuinely saves hours and where it produces output that search engines and customers ignore. Internship and certificate included.',
+ 'sections' => [
+
+  ['h2' => 'The Honest Position on AI Tools',
+   'html' => <<<'H'
+<p>AI has changed the speed of marketing work and has not changed the standard of it. A team that uses these tools well produces in two hours what used to take a day. A team that uses them badly produces a large volume of content nobody reads and Google does not rank.</p>
+<p>This course sits on the useful side of that line. You learn where AI is genuinely better than doing it manually, where it is confidently wrong, and how to build a workflow where a human still makes the judgement calls. We are not selling the idea that a tool replaces the skill. We use these tools daily on client work and the gap between a good prompt and a bad one is enormous.</p>
+H],
+
+  ['h2' => 'What the Six Weeks Cover',
+   'html' => <<<'H'
+<ul>
+<li><strong>Week 1.</strong> How large language models actually work, in enough depth to predict where they fail. Hallucination, training cutoffs, and why a model invents a statistic rather than admitting it does not know.</li>
+<li><strong>Week 2.</strong> Prompting as a working skill: structure, context, examples, constraints and iteration. Building reusable prompt templates for the tasks you repeat weekly.</li>
+<li><strong>Week 3.</strong> Research and analysis: competitor breakdowns, keyword clustering, summarising customer feedback, turning a spreadsheet into an explanation. Verification workflows, since this is where mistakes get expensive.</li>
+<li><strong>Week 4.</strong> Content production with AI in the loop: briefs, outlines, drafting, editing, and the difference between AI-assisted content that ranks and AI-generated content that gets filtered out.</li>
+<li><strong>Week 5.</strong> Visuals and video: image generation for ads and social, editing tools, voice and subtitles, plus the disclosure and copyright issues that come with commercial use.</li>
+<li><strong>Week 6.</strong> Automation and agents: connecting tools, building simple workflows for reporting and lead handling, and a final project automating a real marketing task end to end.</li>
+</ul>
+H],
+
+  ['h2' => 'Answer Engine Optimisation',
+   'html' => <<<'H'
+<p>A growing share of searches now end inside an AI summary rather than on a website. That changes what content needs to look like. Short self-contained answers near the top of a page, clear question-format headings, FAQs present in the HTML rather than injected by JavaScript, and facts stated plainly enough to be quoted.</p>
+<p>This is a meaningful part of the course because it is where search and AI overlap, and it is currently being taught by almost nobody in Pakistan. Being the person on a team who understands it is a genuine advantage right now.</p>
+H],
+
+  ['h2' => 'Internship and Certificate',
+   'html' => <<<'H'
+<p>The included internship applies these workflows to live client work for six weeks under supervision: research briefs, content drafting and editing, creative production, and building automations the team actually uses. It is unpaid and needs around twelve hours a week.</p>
+<p>You finish with a certificate of completion from MrSEO.pk, a reference, and a portfolio of workflows and output you built. As with all our courses, the certificate is issued by us and is not a government accreditation.</p>
+H],
+
+ ],
+ 'faqs' => [
+  ['q'=>'Do I need to pay for ChatGPT, Claude or other subscriptions?','a'=>'Free tiers cover most of the course. Some sessions use paid features, and we provide shared access for those exercises. We also cover which subscriptions are worth paying for once you are working and which are marketed far beyond what they do.'],
+  ['q'=>'Will AI-written content hurt my rankings?','a'=>'Google does not penalise content for being AI-assisted. It filters content that is unhelpful, and unedited AI output is usually unhelpful, which is why it fails so often. The course teaches the workflow that produces content worth reading: human brief, AI draft, human verification and editing.'],
+  ['q'=>'Do I need coding knowledge for the automation part?','a'=>'No. The automation week uses no-code tools with visual workflow builders. If you can write a clear set of instructions, you can build what we cover. Some optional extra material touches on APIs for anyone who wants to go further.'],
+  ['q'=>'Is this course going to be outdated in six months?','a'=>'The specific tools will change and some will disappear. The course is structured around judgement rather than interfaces: knowing what to delegate to a model, how to verify it, and how to build a workflow. That transfers when the tools change. We also update the material every intake.'],
+  ['q'=>'Is this suitable for someone with no marketing background?','a'=>'It works better with some marketing context, so we cover the fundamentals in week one. If you are starting completely fresh, the complete digital marketing course includes this material inside a broader foundation and is usually the better fit.'],
+ ],
+],
+
+/* ============================================================
+   GRAPHIC DESIGN
+   ============================================================ */
+'graphic-design' => [
+ 'quick' => 'An eight-week graphic design course aimed at commercial work rather than art: social media creative, ad visuals, brand identity basics, print and packaging for Pakistani clients. Taught in Adobe and Figma with Canva for speed work. Includes a supervised internship and a certificate of completion.',
+ 'sections' => [
+
+  ['h2' => 'Design for Clients, Not for Dribbble',
+   'html' => <<<'H'
+<p>There is a gap between design that wins likes among designers and design that sells a product in Pakistan. A beautiful minimal layout with a three-word headline does not work for an audience scrolling at speed who needs to know the price, the discount and where to order.</p>
+<p>This course is built around commercial constraints. Client revisions, brand guidelines you did not write, an ugly logo you cannot change, print at a Raja Bazaar press with unreliable colour, files that have to work at four aspect ratios. Those constraints are the job, and designers who handle them calmly get rehired.</p>
+H],
+
+  ['h2' => 'What the Eight Weeks Cover',
+   'html' => <<<'H'
+<ul>
+<li><strong>Week 1.</strong> Fundamentals that transfer to every tool: hierarchy, alignment, contrast, spacing, grids. Why a layout feels wrong and how to name the reason.</li>
+<li><strong>Week 2.</strong> Typography and colour. Pairing typefaces, Urdu and English in one layout, colour systems, accessibility and contrast, and what happens to colour between screen and press.</li>
+<li><strong>Week 3.</strong> Photoshop for commercial work: retouching, compositing, product images, and preparing files at the right size and format.</li>
+<li><strong>Week 4.</strong> Illustrator: vectors, logo construction, icons, and the file formats a printer and a developer each need.</li>
+<li><strong>Week 5.</strong> Social media creative at volume. Templates, master files and resizing systems so twenty posts do not take twenty days. Canva as a production tool where it belongs.</li>
+<li><strong>Week 6.</strong> Brand identity basics: marks, usage rules, a simple brand sheet, and presenting design decisions in language a client understands.</li>
+<li><strong>Week 7.</strong> Print and packaging: bleed, CMYK, resolution, paper and finishing, and how to send files to a local press without a costly surprise.</li>
+<li><strong>Week 8.</strong> Figma for web and UI layouts, portfolio building, and a final client brief delivered end to end.</li>
+</ul>
+H],
+
+  ['h2' => 'Portfolio and Getting Paid',
+   'html' => <<<'H'
+<p>A designer is hired on their folio and almost nothing else. Across the course you build six to eight finished pieces to a real brief rather than exercises, then the internship adds live client work on top.</p>
+<p>We also spend time on the commercial side, because talented designers in Pakistan routinely undercharge and then resent the work. How to price by project rather than by hour, how to scope revisions so they end, what an advance protects you from, and how to hand over files properly so a client comes back rather than asking a cheaper person for edits.</p>
+H],
+
+  ['h2' => 'Internship and Certificate',
+   'html' => <<<'H'
+<p>The included internship is eight weeks of supervised work on live brand accounts: social creative, ad variants, presentation decks, and occasional print work. It is unpaid, needs around twelve hours a week, and produces portfolio pieces that were actually published.</p>
+<p>You receive a certificate of completion from MrSEO.pk and a written reference. It is not a government accredited qualification. In design hiring the portfolio is decisive, which is why the course is weighted towards producing one.</p>
+H],
+
+ ],
+ 'faqs' => [
+  ['q'=>'Do I need Adobe subscriptions?','a'=>'Adobe trials cover the early weeks and we teach free alternatives alongside, including Figma, Photopea and Canva. If you intend to work professionally you will eventually need Photoshop and Illustrator, and we cover the student and regional pricing options.'],
+  ['q'=>'What kind of laptop do I need?','a'=>'For Photoshop and Illustrator at a comfortable speed, 8GB of RAM is the practical minimum and 16GB is better. An older machine will work for smaller files and for Figma and Canva, which run in the browser.'],
+  ['q'=>'Can I learn design if I cannot draw?','a'=>'Yes. Commercial graphic design is composition, typography and problem solving rather than illustration. Drawing is a separate skill and it is not required for the work this course prepares you for.'],
+  ['q'=>'Does the course cover Urdu typography?','a'=>'Yes. Nastaliq and Naskh handling, mixing Urdu with English in a single layout, and the font and rendering problems that come with it. Most international training skips this entirely and it comes up constantly in Pakistani client work.'],
+  ['q'=>'Is there freelance work available for designers in Pakistan?','a'=>'There is substantial local and international freelance demand, particularly for social media creative on retainer. Rates locally are lower than international platforms, and international work needs a stronger portfolio and English communication. The course covers positioning for both.'],
+ ],
+],
+
+/* ============================================================
+   CONTENT WRITING AND MARKETING
+   ============================================================ */
+'content-writing' => [
+ 'quick' => 'A six-week course in commercial content writing: service pages, blog content, ad copy, email and social captions, in English and Roman Urdu. It covers writing for search and for AI answer engines, and includes a supervised internship producing live client content plus a certificate of completion.',
+ 'sections' => [
+
+  ['h2' => 'Writing That Has a Job to Do',
+   'html' => <<<'H'
+<p>Commercial writing is not creative writing with a product mentioned at the end. Every page has a job: get found, answer a question, remove an objection, ask for an action. If a paragraph does none of those, it comes out, regardless of how well it reads.</p>
+<p>That is the discipline this course teaches. You will write a lot and most of it will come back edited, which is how writing improves. The material comes from live client pages, so the examples are real Pakistani businesses with real constraints rather than invented case studies.</p>
+H],
+
+  ['h2' => 'What the Six Weeks Cover',
+   'html' => <<<'H'
+<ul>
+<li><strong>Week 1.</strong> Research before writing: understanding a business, its buyers and the questions they actually ask. Reading Search Console and customer messages to find the real language people use.</li>
+<li><strong>Week 2.</strong> Structure. Answer-first openings, headings that state what the section delivers, paragraphs that carry one idea, and formatting that survives being skimmed on a phone.</li>
+<li><strong>Week 3.</strong> Writing for search: keyword mapping applied to a page, titles and meta descriptions, internal links, and FAQ sections that get pulled into snippets and AI answers.</li>
+<li><strong>Week 4.</strong> Conversion copy: service pages, landing pages, ad copy and calls to action. Handling price objections and trust in a market where buyers are cautious about paying online.</li>
+<li><strong>Week 5.</strong> English and Roman Urdu. When each belongs, how to mix them without sounding forced, and the tone differences between Pindi, Lahore and Karachi audiences.</li>
+<li><strong>Week 6.</strong> Working with AI as an editor and researcher rather than a ghostwriter, building a content calendar, pricing your writing, and a final live brief.</li>
+</ul>
+H],
+
+  ['h2' => 'Where the Money Is in Writing',
+   'html' => <<<'H'
+<p>Per-word content mill work in Pakistan pays badly and always will, because it competes with free AI output. The writing that still pays is the writing that requires understanding a business: service pages, comparison content, pricing guides, case studies, email sequences and long-form pieces that need actual research.</p>
+<p>We are direct about this. If your plan is to sell generic blog posts by the word, this course will not make that profitable, because nothing will. If you want to be the person a business trusts to write the page that brings in enquiries, that work is in demand and pays several times better.</p>
+H],
+
+  ['h2' => 'Internship and Certificate',
+   'html' => <<<'H'
+<p>The included internship is six weeks of supervised writing for live client accounts: service pages, blog content, FAQs, social captions and email. Everything is edited and returned with comments, which is the part self-study cannot replicate. It is unpaid and needs around ten to twelve hours a week.</p>
+<p>You leave with a certificate of completion from MrSEO.pk, a reference, and published bylined or credited work you can show. The certificate is issued by us and is not a government accreditation.</p>
+H],
+
+ ],
+ 'faqs' => [
+  ['q'=>'Does my English need to be perfect?','a'=>'It needs to be solid, not perfect. You should be able to write a clear paragraph without constant grammatical errors. Editing is part of the course and your work will be marked up. If English is a real struggle, work on that first, since no course fixes it in six weeks.'],
+  ['q'=>'Will AI replace content writers?','a'=>'It has already replaced the lowest tier of writing, and that work is not coming back. What has not been replaced is writing that requires understanding a specific business, verifying facts and making editorial judgements. The course teaches you to use AI as a tool so you are on the right side of that line.'],
+  ['q'=>'Can I freelance internationally after this?','a'=>'Many Pakistani writers do, on Upwork, Fiverr and through direct outreach. International rates are considerably higher and so is the competition, and the twin cities already have a large freelance base you will be competing against. The course covers portfolio building and pitching for both local and overseas clients.'],
+  ['q'=>'Is Urdu writing covered or only English?','a'=>'Both. English is the primary medium since most commercial content in Pakistan is written in it, but Roman Urdu is covered in detail because it carries genuine search volume in consumer categories, and proper Urdu content is covered where it makes sense for the audience.'],
+  ['q'=>'How much writing will I do during the course?','a'=>'A substantial amount. Expect a piece each week with a deadline, plus a final project. All of it is edited and returned. Writing courses that involve mostly listening do not produce writers.'],
+ ],
+],
+
+
+/* ============================================================
+   SHORT COURSES
+   Two to three weeks, low fee, certificate but no internship.
+   ============================================================ */
+
+'canva-design' => [
+ 'quick' => 'A two-week Canva course for people who need good-looking posts without learning Photoshop. You build a brand kit and a template system, then produce a full month of content from it. PKR 2,000, weekends, certificate included. The internship is not part of the short courses.',
+ 'sections' => [
+  ['h2' => 'Who This Is For',
+   'html' => <<<'H'
+<p>Students running a page for a campus society, people selling clothes or food on Instagram, someone helping with a family business, and anyone who has been quietly paying a designer PKR 500 a post for work they could do in twenty minutes.</p>
+<p>No design background is assumed and no expensive software is needed. Canva runs in a browser and the free tier covers nearly everything we do in class.</p>
+H],
+  ['h2' => 'What the Two Weeks Cover',
+   'html' => <<<'H'
+<ul>
+<li><strong>Session 1.</strong> How Canva is actually structured, and the three settings that decide whether a design looks amateur or not. Building a brand kit with your colours, fonts and logo.</li>
+<li><strong>Session 2.</strong> Layout basics that transfer anywhere: hierarchy, spacing, contrast and why text over a busy photo never works.</li>
+<li><strong>Session 3.</strong> Template systems. Building one master set and resizing it for feed posts, stories, reels covers and WhatsApp status without redoing anything.</li>
+<li><strong>Session 4.</strong> Magic Studio and the AI tools, plus a month of content produced live so you leave with it finished rather than planned.</li>
+</ul>
+H],
+  ['h2' => 'What You Will Not Get Here',
+   'html' => <<<'H'
+<p>This is not the graphic design course. You will not learn Photoshop, Illustrator, logo construction or print preparation, and Canva has real limits when a client wants vector files or press-ready artwork.</p>
+<p>If you want design as a career rather than a skill for your own page, the eight-week Graphic Designing course is the right one, and your fee here comes off it if you upgrade within three months.</p>
+H],
+ ],
+ 'faqs' => [
+  ['q'=>'Do I need Canva Pro?','a'=>'No. The free tier covers almost everything in class. Pro is useful once you are doing this regularly, mainly for brand kits and one-click resizing, and we show you what it actually adds before you decide to pay for it.'],
+  ['q'=>'Is there an internship with this course?','a'=>'No. The free internship is attached to the professional courses, not the short ones. What you get here is the certificate, the templates you build, and your fee credited towards a full course if you upgrade within three months.'],
+  ['q'=>'Can I take small design jobs after two weeks?','a'=>'For simple social posts for local shops and pages, yes, and several students have. Anything involving logos, print or brand work needs the longer course.'],
+  ['q'=>'Do I need a laptop?','a'=>'A laptop is much easier for class, though Canva works on a phone. If you do not have one, tell us when you apply and we will seat you on-site where a machine is available.'],
+ ],
+],
+
+'ai-basics' => [
+ 'quick' => 'A two-week plain-language introduction to ChatGPT, Claude and Gemini for study, work and small daily tasks, including where these tools are confidently wrong. PKR 2,000, weekends, certificate included, no internship.',
+ 'sections' => [
+  ['h2' => 'Starting From Zero',
+   'html' => <<<'H'
+<p>Most people have opened ChatGPT once, got a bland answer and closed it. The gap between that and a genuinely useful result is prompting, context and knowing what to ask for, which takes a couple of sessions to learn and then saves hours every week.</p>
+<p>The course is deliberately unglamorous. No talk of replacing your job or building an empire. Just the tasks people actually have: assignments, applications, emails, summarising a long document, planning, translating, organising a spreadsheet.</p>
+H],
+  ['h2' => 'What the Two Weeks Cover',
+   'html' => <<<'H'
+<ul>
+<li><strong>Session 1.</strong> What these models are and what they are not, in enough depth to predict where they fail. Setting up the free tiers and comparing what each one is good at.</li>
+<li><strong>Session 2.</strong> Prompting properly: giving context, setting a role, providing examples, and iterating instead of accepting the first answer.</li>
+<li><strong>Session 3.</strong> Study and work use: summarising, explaining a difficult topic, drafting and editing, CVs and cover letters, and translating between English and Urdu.</li>
+<li><strong>Session 4.</strong> Verification and limits. Hallucinated references, invented statistics, out-of-date answers, and the academic honesty line you should not cross.</li>
+</ul>
+H],
+  ['h2' => 'The Honest Caveat',
+   'html' => <<<'H'
+<p>Two weeks makes you competent with the tools. It does not make you an AI professional, and any institute in Pakistan advertising a short course as a path to an AI career is selling you something.</p>
+<p>If you want AI applied to actual marketing work, workflows, automation and content that search engines still rank, that is the six-week AI for Marketing course.</p>
+H],
+ ],
+ 'faqs' => [
+  ['q'=>'Do I need to pay for ChatGPT Plus?','a'=>'No. The whole course runs on free tiers. We cover what the paid versions add so you can decide later, rather than starting with a subscription you may not need.'],
+  ['q'=>'Will this help with university assignments?','a'=>'Yes, for research, structuring and editing. We also spend a session on where the academic honesty line sits, because submitting generated work as your own is a disciplinary matter and detection is getting better, not worse.'],
+  ['q'=>'Is this course technical? I am not from an IT background.','a'=>'Not at all. There is no coding and no maths. If you can use WhatsApp and a browser, you can do this course.'],
+  ['q'=>'Does it include an internship?','a'=>'No. Short courses include the certificate only. The internship is part of the professional courses, and your fee here is credited if you upgrade within three months.'],
+ ],
+],
+
+'wordpress' => [
+ 'quick' => 'A three-week WordPress course where you launch a real, working business website: hosting, theme, pages, forms, speed and basic SEO, without writing code. PKR 4,000, evenings, certificate included, no internship.',
+ 'sections' => [
+  ['h2' => 'You Leave With a Live Site',
+   'html' => <<<'H'
+<p>The measure of this course is simple. On the last evening your site is online at a real domain, loads properly on a phone, and has a working contact form that delivers to an inbox. Not a localhost demo you never touch again.</p>
+<p>Bring a project: your own business, a family business, a portfolio, or a practice client. Working on something you care about is the difference between finishing and drifting.</p>
+H],
+  ['h2' => 'What the Three Weeks Cover',
+   'html' => <<<'H'
+<ul>
+<li><strong>Week 1.</strong> How hosting and domains work, cPanel, installing WordPress, SSL, and the settings to fix on day one that most tutorials skip.</li>
+<li><strong>Week 2.</strong> Building pages with Elementor, theme choice, menus, mobile layout, contact forms, WhatsApp buttons and Google Maps embeds.</li>
+<li><strong>Week 3.</strong> Speed and images, basic on-page SEO with Rank Math, backups and security basics, a look at WooCommerce for selling, and handover so a client can update the site themselves.</li>
+</ul>
+H],
+  ['h2' => 'What This Course Does Not Make You',
+   'html' => <<<'H'
+<p>It does not make you a developer. There is no PHP, no theme development and no custom plugin work here. What it makes you is someone who can build and launch a competent business website, which is what most small clients in the twin cities actually need and pay for.</p>
+<p>Hosting and domain costs are yours, roughly PKR 3,000 to 6,000 for a year if you want to keep the site live, which is close to the course fee itself. We show you what is worth paying for and what is not before you spend anything.</p>
+H],
+ ],
+ 'faqs' => [
+  ['q'=>'Do I need to buy hosting and a domain?','a'=>'For a site you intend to keep, yes, and it is roughly PKR 3,000 to 6,000 for the first year. For learning only, we provide a temporary environment so nobody is forced to spend. We go through the options before anyone buys anything.'],
+  ['q'=>'Is coding required?','a'=>'No. Everything is done through WordPress and Elementor. We show you a little HTML and CSS so you can make small tweaks confidently, but nothing in the course depends on it.'],
+  ['q'=>'Can I make money with this after three weeks?','a'=>'Small business sites are a realistic first service, and local clients in Rawalpindi and Islamabad pay in the PKR 25,000 to 60,000 range for one. Your first one or two will take much longer than you expect, which is normal.'],
+  ['q'=>'Does it cover e-commerce?','a'=>'WooCommerce is introduced in the final week so you understand the structure, but a full online store with payments, shipping and inventory is a bigger subject than three weeks allows.'],
+ ],
+],
+
+'video-editing' => [
+ 'quick' => 'Two weeks of short-form video editing in CapCut: hooks, cutting, captions, sound and export settings for Reels, TikTok and Shorts, all doable on a phone. PKR 2,500, evenings, certificate included, no internship.',
+ 'sections' => [
+  ['h2' => 'Editing Is Most of the Result',
+   'html' => <<<'H'
+<p>The gap between a video that gets four hundred views and one that gets forty thousand is rarely the camera. It is the first two seconds, the pace of the cuts, whether the captions are readable with the sound off, and whether the audio is clean.</p>
+<p>All of that is learnable in two weeks, and all of it works on a mid-range phone. We will not tell you to buy equipment.</p>
+H],
+  ['h2' => 'What the Two Weeks Cover',
+   'html' => <<<'H'
+<ul>
+<li><strong>Session 1.</strong> Shooting: framing, stability, light you already have, and recording audio that does not need rescuing later.</li>
+<li><strong>Session 2.</strong> CapCut properly. Timeline, cutting to rhythm, speed ramps, transitions used sparingly, and the effects that instantly look cheap.</li>
+<li><strong>Session 3.</strong> Captions and text, trending audio, music licensing in plain terms, and fixing bad audio after the fact.</li>
+<li><strong>Session 4.</strong> Export settings for each platform, building a template so one video takes an hour, and a finished piece reviewed in class.</li>
+</ul>
+H],
+  ['h2' => 'Turning It Into Money',
+   'html' => <<<'H'
+<p>Short-form editing is one of the easiest first freelance services because demand is constant and the work is fast once you have a system. Local brands, restaurants, gyms and clothing pages in the twin cities all need volume and most are paying badly for slow work.</p>
+<p>We spend the last part of the course on what to charge per video, what a monthly package looks like, and how to scope revisions so they end.</p>
+H],
+ ],
+ 'faqs' => [
+  ['q'=>'Do I need a laptop or will a phone do?','a'=>'A phone is enough for everything in this course, and CapCut on mobile is what most working editors here use for short-form. A laptop makes longer projects more comfortable but is not required.'],
+  ['q'=>'Do I need to buy CapCut Pro?','a'=>'No. The free version covers the course. We point out which Pro features are genuinely time-saving if you start taking paid work.'],
+  ['q'=>'Will you help me grow my own page?','a'=>'Content strategy is touched on, but growth is the focus of the six-week Social Media Marketing course. This one is about the craft of editing.'],
+  ['q'=>'Is an internship included?','a'=>'No. Short courses include the certificate only. If you upgrade to a professional course within three months, this fee is credited towards it.'],
+ ],
+],
+
+'freelancing' => [
+ 'quick' => 'Three weeks on starting freelance work from Pakistan: choosing one service, building a Fiverr or Upwork profile, writing proposals that get replies, pricing, and receiving international payments legally. PKR 3,000, weekends, certificate included, no internship.',
+ 'sections' => [
+  ['h2' => 'The Part Most People Get Wrong',
+   'html' => <<<'H'
+<p>Most new freelancers in Pakistan fail for the same two reasons. They offer everything to everyone, so the profile says nothing, and they send the same copied proposal to fifty jobs, so nobody replies.</p>
+<p>This course is built around fixing both. One service, described clearly, priced sensibly, pitched properly. That is a boring answer and it is the one that works.</p>
+H],
+  ['h2' => 'What the Three Weeks Cover',
+   'html' => <<<'H'
+<ul>
+<li><strong>Week 1.</strong> Picking a service you can already deliver, researching what it sells for, and building a Fiverr gig or Upwork profile that survives a five-second skim.</li>
+<li><strong>Week 2.</strong> Proposals and outreach. Reading a brief properly, answering it in three lines, using LinkedIn for direct clients, and following up without being a nuisance.</li>
+<li><strong>Week 3.</strong> Pricing by project, handling scope creep, contracts and advances, receiving payment through Payoneer or Wise, and what to do when a client goes quiet or disputes.</li>
+</ul>
+H],
+  ['h2' => 'What We Will Not Promise',
+   'html' => <<<'H'
+<p>We will not tell you this replaces a job in a month. Most people who stick with it get their first small order in four to eight weeks and build from there, and a lot of people quit in week three because nothing has happened yet.</p>
+<p>You also need a skill to sell. If you do not have one yet, take a short course first, Canva, video editing or WordPress, and then this one. That combination is the realistic path.</p>
+H],
+ ],
+ 'faqs' => [
+  ['q'=>'I have no skill yet. Can I still take this?','a'=>'It will be much less useful. Freelancing is the business layer on top of a skill, not a skill in itself. Take Canva, video editing or WordPress first, then this, and you will have something to actually sell.'],
+  ['q'=>'How do I get paid in Pakistan?','a'=>'Payoneer and Wise are the routes most freelancers use, alongside a local bank account and, where relevant, a freelancer registration with the SBP scheme. We walk through setup and the fees, though we are not tax advisers and we say so.'],
+  ['q'=>'How long before I get my first order?','a'=>'Typically four to eight weeks of consistent applying for people who finish the course and keep going. Anyone giving you a shorter guaranteed number is guessing or selling something.'],
+  ['q'=>'Is Fiverr saturated now?','a'=>'It is crowded at the bottom, where people compete on price for generic work. It is not crowded for specific, well-described services delivered reliably, which is exactly what the course teaches you to build.'],
+ ],
+],
+
+'meta-ads-basics' => [
+ 'quick' => 'Two weeks on running Facebook and Instagram ads properly instead of boosting posts: Business Manager setup, campaign objectives, targeting, creative testing and reading results. PKR 3,000, evenings, certificate included, no internship.',
+ 'sections' => [
+  ['h2' => 'Boosting Is Not Advertising',
+   'html' => <<<'H'
+<p>The boost button exists because it is easy, not because it works. It optimises for engagement by default, which is why boosted posts collect likes from people who will never buy anything.</p>
+<p>Running the same budget through Ads Manager with the right objective and a pixel installed usually produces a different result entirely, and that difference is what these two weeks teach.</p>
+H],
+  ['h2' => 'What the Two Weeks Cover',
+   'html' => <<<'H'
+<ul>
+<li><strong>Session 1.</strong> Business Manager, ad account, page roles, payment methods that work from Pakistan, and installing the pixel or connecting WhatsApp.</li>
+<li><strong>Session 2.</strong> Campaign structure and objectives. Messages, traffic, sales and leads, and which one matches the goal you actually have.</li>
+<li><strong>Session 3.</strong> Targeting: location down to a radius around your shop, interests, custom and lookalike audiences, and why narrow is not always better.</li>
+<li><strong>Session 4.</strong> Creative testing, budget decisions, reading the numbers that matter, and building a simple report with cost per message and cost per order.</li>
+</ul>
+H],
+  ['h2' => 'Small Budgets, Real Numbers',
+   'html' => <<<'H'
+<p>Everything is taught at budgets a student or a small shop can actually spend. A few hundred rupees a day is enough to learn how the system behaves, and we work through live examples rather than theory.</p>
+<p>The deeper work, full funnel structure, catalogue campaigns, attribution and scaling budgets, sits in the six-week Social Media Marketing course and the complete programme.</p>
+H],
+ ],
+ 'faqs' => [
+  ['q'=>'Do I have to spend my own money on ads?','a'=>'Not necessarily. Class exercises use demonstration accounts. If you want to run a live test, a few hundred rupees a day for a few days is plenty, and it is optional.'],
+  ['q'=>'Does this work for a small shop or home business?','a'=>'Yes, and that is most of who takes it. Radius targeting around a location plus WhatsApp message campaigns is a genuinely effective setup for small local businesses in Rawalpindi and Islamabad.'],
+  ['q'=>'Do I need a business page and a website?','a'=>'A Facebook or Instagram business page is required. A website is not: message and WhatsApp campaigns work without one, and we cover that route in detail since many small sellers here have no site.'],
+  ['q'=>'Is Google Ads included?','a'=>'No. This is Meta only. Google Ads is covered in the complete digital marketing programme, since search advertising works differently enough to need its own time.'],
+ ],
+],
+
+    ];
+}

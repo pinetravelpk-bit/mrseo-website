@@ -1,0 +1,25 @@
+{
+  "name": "mrseo-nextjs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "convert": "node scripts/convert-php.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "0.511.0",
+    "next": "15.5.27",
+    "nodemailer": "6.10.1",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.18.0",
+    "@types/nodemailer": "6.4.17",
+    "@types/react": "19.1.12",
+    "@types/react-dom": "19.1.9",
+    "typescript": "5.9.2"
+  }
+}

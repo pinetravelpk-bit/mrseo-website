@@ -1,0 +1,146 @@
+{
+ "travel-tourism": {
+  "name": "Travel & Tourism",
+  "urdu": "سیاحت",
+  "icon": "✈️",
+  "slug": "travel-tourism",
+  "desc": "Hajj and Umrah packages, northern area tours and visa services each need their own content hub.",
+  "kws": [
+   "Umrah packages Pakistan",
+   "Hunza tour packages",
+   "tour operators Karachi",
+   "travel agency Lahore"
+  ],
+  "stats": [
+   "Seasonal planning",
+   "Religious travel focus",
+   "Direct booking growth"
+  ]
+ },
+ "ecommerce": {
+  "name": "E-Commerce",
+  "urdu": "ای کامرس",
+  "icon": "🛒",
+  "slug": "ecommerce",
+  "desc": "Category architecture, product schema and technical hygiene decide who ranks around the marketplaces.",
+  "kws": [
+   "online shopping Pakistan",
+   "buy online Karachi",
+   "ecommerce SEO Pakistan",
+   "product page optimisation"
+  ],
+  "stats": [
+   "Category-first strategy",
+   "Product schema",
+   "COD conversion"
+  ]
+ },
+ "cosmetics": {
+  "name": "Cosmetics & Beauty",
+  "urdu": "خوبصورتی",
+  "icon": "💄",
+  "slug": "cosmetics",
+  "desc": "Salons compete in the map pack while brands compete nationally on ingredient and concern searches.",
+  "kws": [
+   "beauty salon Lahore",
+   "bridal makeup Karachi",
+   "skin care Pakistan",
+   "dermatologist Islamabad"
+  ],
+  "stats": [
+   "Wedding season timing",
+   "Local pack focus",
+   "Ingredient content"
+  ]
+ },
+ "medical": {
+  "name": "Medical & Healthcare",
+  "urdu": "طبی",
+  "icon": "🏥",
+  "slug": "medical",
+  "desc": "Verifiable doctor credentials and named medical authorship matter more here than keyword work.",
+  "kws": [
+   "hospitals in Karachi",
+   "best doctors Pakistan",
+   "medical centre Islamabad",
+   "specialist Lahore"
+  ],
+  "stats": [
+   "Credential-led",
+   "Doctor profiles",
+   "Cost transparency"
+  ]
+ },
+ "schools": {
+  "name": "Schools & Education",
+  "urdu": "تعلیم",
+  "icon": "🎓",
+  "slug": "schools",
+  "desc": "Admission season runs January to April, so the content work has to happen the autumn before.",
+  "kws": [
+   "best schools Lahore",
+   "private schools Karachi",
+   "O level school Islamabad",
+   "admission fee structure"
+  ],
+  "stats": [
+   "Admission cycle",
+   "Campus pages",
+   "Fee transparency"
+  ]
+ },
+ "hotels": {
+  "name": "Hotels & Hospitality",
+  "urdu": "ہوٹل",
+  "icon": "🏨",
+  "slug": "hotels",
+  "desc": "The goal is cutting platform commission by winning brand searches and direct bookings.",
+  "kws": [
+   "hotels in Lahore",
+   "guest house Islamabad",
+   "wedding hall Karachi",
+   "banquet hall Multan"
+  ],
+  "stats": [
+   "Direct booking",
+   "Profile-led",
+   "Event revenue"
+  ]
+ },
+ "clinics": {
+  "name": "Clinics & Dental",
+  "urdu": "کلینک",
+  "icon": "🦷",
+  "slug": "clinics",
+  "desc": "Map pack placement decides most clinic searches, so profile and review work comes first.",
+  "kws": [
+   "dental clinic Karachi",
+   "skin clinic Lahore",
+   "root canal cost Pakistan",
+   "orthodontist Islamabad"
+  ],
+  "stats": [
+   "Map pack first",
+   "Procedure pricing",
+   "Review flow"
+  ]
+ },
+ "real-estate": {
+  "name": "Real Estate",
+  "urdu": "رئیل اسٹیٹ",
+  "icon": "🏠",
+  "slug": "real-estate",
+  "desc": "Society and project pages plus overseas buyer content win where the portals are weakest.",
+  "kws": [
+   "property for sale Karachi",
+   "DHA plots Islamabad",
+   "Bahria Town Lahore",
+   "buy property from overseas"
+  ],
+  "stats": [
+   "Project pages",
+   "Overseas buyers",
+   "Documentation content"
+  ]
+ }
+}

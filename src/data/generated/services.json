@@ -1,0 +1,38 @@
+{
+ "seo": {
+  "name": "SEO",
+  "icon": "🔍",
+  "sub": "Technical, on-page and off-page",
+  "desc": "Technical fixes, page architecture, content and links, planned around what your buyers actually search."
+ },
+ "ppc": {
+  "name": "PPC and Google Ads",
+  "icon": "💰",
+  "sub": "Tracked paid campaigns",
+  "desc": "Search and social campaigns with proper conversion tracking, so cost per enquiry is a number and not a guess."
+ },
+ "social-media": {
+  "name": "Social Media",
+  "icon": "📱",
+  "sub": "Facebook, Instagram, TikTok",
+  "desc": "Content and paid distribution built for Pakistani audiences rather than recycled international playbooks."
+ },
+ "web-design": {
+  "name": "Web Design and Development",
+  "icon": "🖥️",
+  "sub": "WordPress, Shopify, custom",
+  "desc": "Fast, crawlable sites that load properly on mobile connections and are built to be optimised later."
+ },
+ "local-seo": {
+  "name": "Local SEO",
+  "icon": "📍",
+  "sub": "Google Business Profile and map pack",
+  "desc": "Profile setup, categories, service listings, citations and a review process your team can sustain."
+ },
+ "content": {
+  "name": "Content Marketing",
+  "icon": "✍️",
+  "sub": "English and Urdu",
+  "desc": "Service pages, comparison content, pricing guides and FAQs written to be read and to answer questions."
+ }
+}

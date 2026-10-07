@@ -1,0 +1,66 @@
+{
+ "short": [
+  {
+   "icon": "💰",
+   "t": "Low fee, one payment",
+   "d": "Between PKR 2,000 and PKR 4,000 for the whole course. No registration fee, no material charge, nothing added later."
+  },
+  {
+   "icon": "📜",
+   "t": "Free certificate",
+   "d": "A certificate of completion issued by MrSEO.pk, verifiable on request. Not a government accreditation, and we will not pretend it is one."
+  },
+  {
+   "icon": "⏱",
+   "t": "Two to three weeks",
+   "d": "Short by design. Evening and weekend slots so it fits around university, college or a job."
+  },
+  {
+   "icon": "📱",
+   "t": "Work on your own project",
+   "d": "You bring your page, your side business or your portfolio idea and build it during class rather than following a dummy exercise."
+  },
+  {
+   "icon": "🎥",
+   "t": "Session recordings",
+   "d": "Every class is recorded and you keep access, so a missed evening does not cost you the course."
+  },
+  {
+   "icon": "🎓",
+   "t": "Credit towards a full course",
+   "d": "The internship belongs to the professional courses, not these. If you upgrade within three months, your short course fee comes off the bigger one."
+  }
+ ],
+ "pro": [
+  {
+   "icon": "🎓",
+   "t": "Free internship",
+   "d": "Supervised work on live client accounts after the coursework ends. Included at no extra cost, unpaid, around 12 to 15 hours a week."
+  },
+  {
+   "icon": "📜",
+   "t": "Free certificate",
+   "d": "A certificate of completion issued by MrSEO.pk, verifiable on request. Not a government accreditation, and we do not pretend otherwise."
+  },
+  {
+   "icon": "💼",
+   "t": "Portfolio you keep",
+   "d": "Every module ends in a finished piece of work. By the last week that folder is the portfolio an interviewer will ask to see."
+  },
+  {
+   "icon": "💬",
+   "t": "Written reference",
+   "d": "Complete the internship and you get a reference describing the accounts you worked on and the tasks you handled."
+  },
+  {
+   "icon": "🎥",
+   "t": "Session recordings",
+   "d": "Every class is recorded and you keep access, so a missed evening does not put you behind."
+  },
+  {
+   "icon": "👥",
+   "t": "Small batches",
+   "d": "Between 15 and 18 seats per intake, so your work actually gets reviewed rather than collected."
+  }
+ ]
+}

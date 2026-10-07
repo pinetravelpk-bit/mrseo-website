@@ -1,0 +1,82 @@
+{
+ "karachi": {
+  "name": "Karachi",
+  "urdu": "کراچی",
+  "flag": "🏙️",
+  "note": "Commercial capital",
+  "pop": "16M+",
+  "clients": "120+",
+  "comp": "Very high",
+  "slug": "karachi"
+ },
+ "lahore": {
+  "name": "Lahore",
+  "urdu": "لاہور",
+  "flag": "🕌",
+  "note": "Cultural capital",
+  "pop": "13M+",
+  "clients": "95+",
+  "comp": "High",
+  "slug": "lahore"
+ },
+ "islamabad": {
+  "name": "Islamabad",
+  "urdu": "اسلام آباد",
+  "flag": "🏛️",
+  "note": "Federal capital",
+  "pop": "2M+",
+  "clients": "60+",
+  "comp": "Medium",
+  "slug": "islamabad"
+ },
+ "rawalpindi": {
+  "name": "Rawalpindi",
+  "urdu": "راولپنڈی",
+  "flag": "🌆",
+  "note": "Twin city",
+  "pop": "2.1M+",
+  "clients": "45+",
+  "comp": "Medium",
+  "slug": "rawalpindi"
+ },
+ "peshawar": {
+  "name": "Peshawar",
+  "urdu": "پشاور",
+  "flag": "🏯",
+  "note": "KP capital",
+  "pop": "4.3M+",
+  "clients": "38+",
+  "comp": "Medium",
+  "slug": "peshawar"
+ },
+ "quetta": {
+  "name": "Quetta",
+  "urdu": "کوئٹہ",
+  "flag": "⛰️",
+  "note": "Balochistan capital",
+  "pop": "1.1M+",
+  "clients": "22+",
+  "comp": "Low",
+  "slug": "quetta"
+ },
+ "faisalabad": {
+  "name": "Faisalabad",
+  "urdu": "فیصل آباد",
+  "flag": "🏭",
+  "note": "Textile hub",
+  "pop": "3.6M+",
+  "clients": "50+",
+  "comp": "High",
+  "slug": "faisalabad"
+ },
+ "multan": {
+  "name": "Multan",
+  "urdu": "ملتان",
+  "flag": "🌹",
+  "note": "Southern Punjab hub",
+  "pop": "1.9M+",
+  "clients": "30+",
+  "comp": "Medium",
+  "slug": "multan"
+ }
+}
