@@ -4,6 +4,10 @@ import { DEEP_A } from './deep-a';
 import { DEEP_B } from './deep-b';
 import { DEEP_B2 } from './deep-b2';
 import { DEEP_B3 } from './deep-b3';
+import { DEEP_C } from './deep-c';
+import { DEEP_C2 } from './deep-c2';
+import { DEEP_C3 } from './deep-c3';
+import { DEEP_C4 } from './deep-c4';
 
 export type Deep = { blocks: Block[]; faqs?: Faq[]; updatedAt?: string };
 
@@ -22,4 +26,4 @@ function merge(...sets: Record<string, Deep>[]): Record<string, Deep> {
   return out;
 }
 
-export const DEEP: Record<string, Deep> = merge(DEEP_A, DEEP_B, DEEP_B2, DEEP_B3);
+export const DEEP: Record<string, Deep> = merge(DEEP_A, DEEP_B, DEEP_B2, DEEP_B3, DEEP_C, DEEP_C2, DEEP_C3, DEEP_C4);
