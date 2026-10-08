@@ -16,6 +16,13 @@ import { DEEP_E } from './deep-e';
 import { DEEP_E2 } from './deep-e2';
 import { DEEP_E3 } from './deep-e3';
 import { DEEP_E4 } from './deep-e4';
+import { DEEP_F } from './deep-f';
+import { DEEP_F2 } from './deep-f2';
+import { DEEP_F3 } from './deep-f3';
+import { DEEP_G } from './deep-g';
+import { DEEP_G2 } from './deep-g2';
+import { DEEP_G3 } from './deep-g3';
+import { DEEP_G4 } from './deep-g4';
 
 export type Deep = { blocks: Block[]; faqs?: Faq[]; updatedAt?: string };
 
@@ -34,4 +41,4 @@ function merge(...sets: Record<string, Deep>[]): Record<string, Deep> {
   return out;
 }
 
-export const DEEP: Record<string, Deep> = merge(DEEP_A, DEEP_B, DEEP_B2, DEEP_B3, DEEP_C, DEEP_C2, DEEP_C3, DEEP_C4, DEEP_D, DEEP_D2, DEEP_D3, DEEP_D4, DEEP_E, DEEP_E2, DEEP_E3, DEEP_E4);
+export const DEEP: Record<string, Deep> = merge(DEEP_A, DEEP_B, DEEP_B2, DEEP_B3, DEEP_C, DEEP_C2, DEEP_C3, DEEP_C4, DEEP_D, DEEP_D2, DEEP_D3, DEEP_D4, DEEP_E, DEEP_E2, DEEP_E3, DEEP_E4, DEEP_F, DEEP_F2, DEEP_F3, DEEP_G, DEEP_G2, DEEP_G3, DEEP_G4);
