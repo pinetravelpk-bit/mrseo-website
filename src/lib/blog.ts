@@ -1,4 +1,4 @@
-﻿import type { Faq } from './site';
+import type { Faq } from './site';
 import { anchor } from './anchor';
 import { POSTS } from '@/content/blog';
 
@@ -49,6 +49,8 @@ export type PostInput = {
   body: Block[];
   faqs: Faq[];
   related?: { label: string; href: string }[];
+  /** Date the content was last substantially updated (ISO). Used for dateModified once later than publishAt. */
+  updatedAt?: string;
   /** Optional manual override of the scheduled time (ISO string). */
   publishAt?: string;
 };
@@ -88,6 +90,9 @@ export const ALL_POSTS: Post[] = POSTS.map((p, i) => {
 
 /** BLOG_PREVIEW=1 shows every post regardless of schedule (local preview only, never set it in production). */
 const PREVIEW = process.env.BLOG_PREVIEW === '1';
+/** dateModified: the later of publish time and last update. */
+export const modifiedAt = (p: Post) => (p.updatedAt && p.updatedAt > p.publishAt ? p.updatedAt : p.publishAt);
+
 export const isPublished = (p: Post, now = Date.now()) => PREVIEW || new Date(p.publishAt).getTime() <= now;
 
 /** Published posts, newest first. */

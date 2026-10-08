@@ -9,7 +9,7 @@ import Blocks from '@/components/blog/Blocks';
 import Inline, { plain } from '@/components/blog/Inline';
 import PostCard from '@/components/blog/PostCard';
 import { WhatsAppIcon } from '@/components/Icon';
-import { ACCENTS, ALL_POSTS, fmtDate, isPublished, postBySlug, postImage, postUrl, relatedPosts } from '@/lib/blog';
+import { ACCENTS, ALL_POSTS, fmtDate, isPublished, modifiedAt, postBySlug, postImage, postUrl, relatedPosts } from '@/lib/blog';
 import { abs, waLink } from '@/lib/site';
 import { pageMeta } from '@/lib/meta';
 import { breadcrumbSchema, faqSchema, JsonLd } from '@/lib/schema';
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     authors: [{ name: 'Syed Mudassir Shah', url: abs('/about/') }],
     openGraph: {
       type: 'article', title: post.title, description: desc, url: postUrl(post.slug), siteName: 'MrSEO.pk', locale: 'en_PK',
-      images: img, publishedTime: post.publishAt, modifiedTime: post.publishAt, authors: [abs('/about/')], section: post.category, tags: [post.keyword],
+      images: img, publishedTime: post.publishAt, modifiedTime: modifiedAt(post), authors: [abs('/about/')], section: post.category, tags: [post.keyword],
     },
     twitter: { card: 'summary_large_image', title: post.title, description: desc, images: [postImage(post.slug)] },
   };
@@ -58,7 +58,7 @@ export default async function PostPage({ params }: Props) {
         {
           '@type': 'BlogPosting', '@id': abs(url) + '#article', headline: post.title, description: post.description,
           image: { '@type': 'ImageObject', url: abs(postImage(post.slug)), width: 1200, height: 630 },
-          datePublished: post.publishAt, dateModified: post.publishAt,
+          datePublished: post.publishAt, dateModified: modifiedAt(post),
           author: { '@id': abs('/#owner') }, publisher: { '@id': abs('/#business') },
           mainEntityOfPage: abs(url), url: abs(url), inLanguage: 'en-PK',
           articleSection: post.category, keywords: post.keyword, wordCount: post.words,

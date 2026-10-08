@@ -21,6 +21,7 @@ for (const p of ALL_POSTS) {
   const aw = p.answer.split(/\s+/).length; if (aw < 35 || aw > 75) problems.push(`${tag}: answer ${aw} words`);
   const md = p.metaDescription ?? p.description; if (md.length > 158) problems.push(`${tag}: meta description ${md.length} chars`);
   if (p.title.length > 70) problems.push(`${tag}: title ${p.title.length} chars`);
+  if (p.words < 2000) problems.push(`${tag}: only ${p.words} words`);
   if (p.faqs.length < 4) problems.push(`${tag}: only ${p.faqs.length} faqs`);
   const text = JSON.stringify(p);
   for (const m of text.matchAll(/\]\((\/[^)]*)\)|"href":"(\/[^"]*)"/g)) { const h = (m[1] ?? m[2]).split('#')[0]; if (!routes.has(h)) problems.push(`${tag}: broken internal link ${h}`); }
