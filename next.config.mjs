@@ -3,6 +3,8 @@ const CITIES = 'karachi|lahore|islamabad|rawalpindi|peshawar|quetta|faisalabad|m
 const INDUSTRIES = 'travel-tourism|ecommerce|cosmetics|medical|schools|hotels|clinics|real-estate';
 
 const nextConfig = {
+  // One build worker keeps memory use low on small servers (the VPS shares RAM with other sites).
+  experimental: { cpus: 1 },
   // WordPress permalinks ended in a slash; keep them identical.
   trailingSlash: true,
   async redirects() {
