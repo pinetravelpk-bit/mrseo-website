@@ -1,7 +1,8 @@
+import { postUrl, publishedPosts } from '@/lib/blog';
 import { abs, BASE_CITY, CAMPUS, CAMPUS_AREA, cities, cityUrl, courses, courseUrl, EMAIL, industries, industryUrl, services, serviceUrl, WA } from '@/lib/site';
 
 /* A plain-text summary for AI crawlers, served at /llms.txt. Kept factual and short. */
-export const dynamic = 'force-static';
+export const revalidate = 60;
 
 export function GET() {
   const L: string[] = [
@@ -31,6 +32,7 @@ export function GET() {
     'Each page covers how that sector behaves in Pakistani search, what ranks,',
     'seasonality and content priorities.', '',
     ...Object.entries(industries).map(([s, i]) => `- [${i.name}](${abs(industryUrl(s))})`),
+    ...(() => { const ps = publishedPosts(); return ps.length ? ['', '## Blog guides', '', 'Each guide opens with a short direct answer, then the detail.', '', ...ps.map((p) => `- [${p.title}](${abs(postUrl(p.slug))}): ${p.answer}`)] : []; })(),
     '', '## Coverage', '',
     'Cities: ' + Object.values(cities).map((c) => c.name).join(', '),
     'Industries: ' + Object.values(industries).map((i) => i.name).join(', '),

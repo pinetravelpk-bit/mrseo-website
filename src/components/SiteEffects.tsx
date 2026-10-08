@@ -7,6 +7,19 @@ import { useEffect } from 'react';
 export default function SiteEffects() {
   const pathname = usePathname();
 
+  // Infographics animate in once when they scroll into view.
+  useEffect(() => {
+    // Only elements still below the fold are hidden for the animation, so content is never blank without JS.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const els = Array.from(document.querySelectorAll('.anim')).filter((el) => el.getBoundingClientRect().top > window.innerHeight);
+    els.forEach((el) => el.classList.add('pending'));
+    const io = new IntersectionObserver((list) => {
+      list.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [pathname]);
+
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 

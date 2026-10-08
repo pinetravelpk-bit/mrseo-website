@@ -3,17 +3,8 @@ import type { Faq, LongContent, Section } from '@/lib/site';
 import FaqList from './FaqList';
 import Toc from './Toc';
 
-/** Same output as WordPress sanitize_title(), prefixed, so jump links match the old site. */
-export function anchor(text: string): string {
-  const slug = text
-    .normalize('NFKD').replace(/[̀-ͯ]/g, '')
-    .toLowerCase()
-    .replace(/&[a-z0-9#]+;/g, '')
-    .replace(/[^a-z0-9\s-]/g, '')
-    .trim()
-    .replace(/[\s-]+/g, '-');
-  return 'sec-' + (slug || 'section');
-}
+import { anchor } from '@/lib/anchor';
+export { anchor };
 
 /* Direct-answer block. Answer engines pull from short, self-contained paragraphs placed high on the page. */
 export function AnswerBox({ question, answer }: { question: string; answer?: string }) {

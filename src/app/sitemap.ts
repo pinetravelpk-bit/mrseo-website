@@ -1,9 +1,14 @@
 import type { MetadataRoute } from 'next';
+import { postImage, postUrl, publishedPosts } from '@/lib/blog';
 import { abs, cities, cityUrl, courses, courseUrl, industries, industryUrl, services, serviceUrl } from '@/lib/site';
+
+// Rebuilt every minute so scheduled blog posts are listed as soon as they publish.
+export const revalidate = 60;
 
 /* Priorities mirror the theme's Rank Math sitemap settings. */
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
+  const posts = publishedPosts();
   const page = (url: string, priority: number, changeFrequency: 'weekly' | 'monthly' = 'monthly') => ({ url: abs(url), lastModified: now, priority, changeFrequency });
   return [
     page('/', 1, 'weekly'),
@@ -17,5 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...Object.keys(courses).map((s) => page(courseUrl(s), 0.9, 'weekly')),
     ...Object.keys(cities).map((s) => page(cityUrl(s), 0.9)),
     ...Object.keys(industries).map((s) => page(industryUrl(s), 0.8)),
+    ...(posts.length ? [page('/blog/', 0.7, 'weekly')] : []),
+    ...posts.map((p) => ({ url: abs(postUrl(p.slug)), lastModified: new Date(p.publishAt), priority: 0.7, changeFrequency: 'monthly' as const, images: [abs(postImage(p.slug))] })),
   ];
 }

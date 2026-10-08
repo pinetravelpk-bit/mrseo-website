@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
+import './blog.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SiteEffects from '@/components/SiteEffects';

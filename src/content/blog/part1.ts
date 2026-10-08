@@ -1,0 +1,111 @@
+import type { PostInput } from '@/lib/blog';
+
+const SRC = {
+  needSeo: { label: 'Google Search Central: Do you need an SEO?', href: 'https://developers.google.com/search/docs/fundamentals/do-i-need-seo' },
+  starter: { label: 'Google Search Central: SEO Starter Guide', href: 'https://developers.google.com/search/docs/fundamentals/seo-starter-guide' },
+  helpful: { label: 'Google Search Central: Creating helpful, reliable, people-first content', href: 'https://developers.google.com/search/docs/fundamentals/creating-helpful-content' },
+  spam: { label: 'Google Search Central: Spam policies for Google web search', href: 'https://developers.google.com/search/docs/essentials/spam-policies' },
+  gbp: { label: 'Google Business Profile: Guidelines for representing your business', href: 'https://support.google.com/business/answer/3038177' },
+  local: { label: 'Google Business Profile Help: Tips to improve your local ranking', href: 'https://support.google.com/business/answer/7091' },
+};
+export { SRC };
+
+export const PART1: PostInput[] = [
+  /* ------------------------------------------------------------------ 1 */
+  {
+    slug: 'best-seo-expert-in-islamabad',
+    title: 'How to Find the Best SEO Expert in Islamabad',
+    keyword: 'best SEO expert in Islamabad',
+    description: 'A practical checklist for finding the best SEO expert in Islamabad: what to verify, which questions to ask, the red flags to avoid and how to compare proposals fairly.',
+    category: 'Hiring guide',
+    icon: 'award',
+    accent: 'green',
+    answer: 'The best SEO expert in Islamabad is the one who can show ranking and enquiry results for businesses like yours, explains a written 90-day plan in plain language, reports on leads rather than traffic, refuses to guarantee positions, and works on monthly terms. Verify their own rankings, past clients and Search Console access before you sign.',
+    takeaways: [
+      '"Best" means best for your sector, area and budget, not the agency with the biggest claims.',
+      'Ask for proof you can verify: live rankings, client references and Search Console screenshots with dates.',
+      'A credible expert gives you a written plan with priorities and timelines before taking a fee.',
+      'Guaranteed first-page rankings, bought links and fake reviews are the clearest red flags.',
+      'Judge proposals on enquiries and cost per lead, not on the number of keywords promised.',
+    ],
+    body: [
+      { type: 'h2', text: 'What "best" actually means for an Islamabad business' },
+      { type: 'p', text: 'Islamabad is a low-volume, high-value search market. A keyword that gets thousands of searches nationally may get a few hundred here, but a single enquiry from a law firm client in Blue Area or a family in F-10 choosing a school can be worth more than dozens of leads elsewhere. That changes what a good SEO expert looks like. You need someone who understands **sector-level targeting** (F-6, F-7, G-11, I-8, DHA, Bahria Enclave), who writes for buyers that research carefully before contacting anyone, and who measures success in qualified enquiries.' },
+      { type: 'p', text: 'So the "best SEO expert in Islamabad" is not a single name. It is the person whose experience, method and reporting match your business. A clinic needs someone comfortable with medical quality standards; a property developer needs someone who understands overseas Pakistani buyers; a restaurant needs map pack and review work more than blog posts. Our [Islamabad SEO guide](/seo-expert/seo-expert-islamabad/) explains how the local market behaves in more depth.' },
+      { type: 'stats', title: 'Islamabad search at a glance', items: [
+        { value: 'Low', label: 'Search volume compared with Karachi or Lahore' },
+        { value: 'High', label: 'Value per enquiry, especially for services' },
+        { value: 'Sector', label: 'Level targeting (F-10, G-11, Blue Area) converts best' },
+        { value: 'English', label: 'Dominates commercial search in the capital' },
+      ] },
+      { type: 'h2', text: 'The seven checks that separate real experts from sellers' },
+      { type: 'p', text: 'Most business owners compare SEO providers on price and on how confident they sound. Both are poor signals. These checks take an afternoon and tell you far more.' },
+      { type: 'checklist', title: 'Verify before you shortlist', items: [
+        '**Live proof:** search two or three of their claimed keywords yourself, in an incognito window, from Islamabad.',
+        '**Client references:** speak to one current and one past client, not just read a testimonial.',
+        '**Search Console evidence:** ask for anonymised screenshots showing clicks over at least six months.',
+        '**Their own visibility:** an SEO expert who cannot rank their own site for local terms is a warning sign.',
+        '**A written plan:** priorities for the first 90 days, with reasons, before you pay a retainer.',
+        '**Honest timelines:** 30 to 60 days for local movement, three to twelve months for competitive terms.',
+        '**Clean methods:** no paid link networks, no review gating, no doorway pages.',
+      ] },
+      { type: 'h2', text: 'Questions to ask in the first conversation' },
+      { type: 'p', text: 'A short call tells you whether someone thinks like a strategist or a salesperson. Use these questions and listen for specifics rather than buzzwords.' },
+      { type: 'slides', title: 'Interview questions that reveal real expertise', slides: [
+        { title: 'Start with the audit', points: ['What would you look at first on my site, and why?', 'Which three problems do you expect to find?', 'How long will the audit take and what will I receive?'] },
+        { title: 'Ask about measurement', points: ['Which numbers will you report every month?', 'How will you connect rankings to calls, WhatsApp messages and forms?', 'What happens if a month goes badly?'] },
+        { title: 'Ask about method', points: ['How do you build links in Pakistan without paying for them?', 'How do you handle Google Business Profile reviews?', 'Will content be written by a person who understands my sector?'] },
+        { title: 'Ask about terms', points: ['Is there a minimum contract?', 'Who owns the content, accounts and data if we stop?', 'Who will actually do the work each week?'] },
+      ] },
+      { type: 'callout', tone: 'tip', title: 'A good sign', text: 'If an expert tells you that SEO is not the right spend for your business this quarter, and explains why, take them seriously. Google itself advises asking candidates to show examples of previous work and success stories before hiring.' },
+      { type: 'h2', text: 'Red flags that should end the conversation' },
+      { type: 'compare', title: 'Sales pitch versus a credible SEO expert', left: { label: 'Walk away if you hear', items: [
+        'Guaranteed number one ranking in 30 days',
+        'Thousands of backlinks for a fixed fee',
+        '"We will get you 5-star reviews"',
+        'Reports full of impressions and keyword counts',
+        'A 12-month contract before any audit',
+      ] }, right: { label: 'Look for this instead', items: [
+        'Realistic timelines tied to your competition',
+        'Links earned through directories, partners and coverage',
+        'A review process real customers can follow',
+        'Reports on enquiries and cost per lead',
+        'Monthly terms after a free or fixed-price audit',
+      ] } },
+      { type: 'p', text: 'Google\'s spam policies specifically name link schemes and fake reviews. An expert who relies on them may produce a short spike, but the recovery from a penalty or a suspended Business Profile takes far longer than ranking properly in the first place.' },
+      { type: 'h2', text: 'How to compare proposals fairly' },
+      { type: 'p', text: 'Put every proposal into the same table. Proposals that look cheap often exclude content, links or reporting, and you pay for those later.' },
+      { type: 'table', caption: 'Proposal comparison template', head: ['Criterion', 'What to look for', 'Weight'], rows: [
+        ['Audit quality', 'Specific issues on your site, ranked by impact', 'High'],
+        ['Plan', 'Named priorities for 90 days with reasons', 'High'],
+        ['Reporting', 'Enquiries, calls, WhatsApp and cost per lead', 'High'],
+        ['Local experience', 'Results in Islamabad or Rawalpindi you can verify', 'Medium'],
+        ['Sector experience', 'Work in your industry or a close one', 'Medium'],
+        ['Terms', 'Monthly, with ownership of content and accounts', 'Medium'],
+        ['Price', 'Clear scope for the fee', 'Low on its own'],
+      ] },
+      { type: 'video', title: 'Finding the right SEO expert in five steps', steps: [
+        { title: 'Define the goal', text: 'Write down what a good outcome is: more calls from F-10 families, more property enquiries from overseas, more bookings. Experts can only plan against a clear goal.' },
+        { title: 'Build a shortlist of three', text: 'Use referrals, Google Maps results and LinkedIn. Check each candidate ranks for local terms and has reviews from real clients.' },
+        { title: 'Request an audit', text: 'Send your URL to all three. Compare how specific each audit is about your site rather than SEO in general.' },
+        { title: 'Check references', text: 'Call one current client per candidate. Ask what changed in enquiries, not just rankings.' },
+        { title: 'Start with 90 days', text: 'Agree a written 90-day plan on monthly terms, with a review meeting at the end before committing further.' },
+      ] },
+      { type: 'h2', text: 'Where MrSEO.pk fits' },
+      { type: 'p', text: 'MrSEO.pk is run by Syed Mudassir Shah from Islamabad and has worked on Pakistani search since 2010. Every engagement starts with a free written audit, a 90-day plan and monthly terms with no lock-in. If your site needs something other than SEO, the audit says so. You can [request the free audit](/contact/) or read more [about how we work](/about/).' },
+      { type: 'sources', items: [SRC.needSeo, SRC.spam, SRC.local] },
+    ],
+    faqs: [
+      { q: 'Who is the best SEO expert in Islamabad?', a: 'There is no single best expert for every business. The best choice is the one with verifiable results in your sector and area, a written plan for your site, reporting tied to enquiries, and clean methods. Compare at least three candidates using the same audit request and checklist.' },
+      { q: 'How long does it take an SEO expert to show results in Islamabad?', a: 'Local service businesses usually see ranking movement within 30 to 60 days and enquiry growth by month three. Competitive categories such as property, healthcare and legal services take six to twelve months because Google applies stricter quality assessment.' },
+      { q: 'Should I hire an agency or an individual SEO expert?', a: 'Choose based on who will actually do the work. Many Islamabad agencies route accounts to junior staff, while an experienced individual consultant may do the work personally. Ask who handles your account each week and speak to them directly.' },
+      { q: 'Can an SEO expert guarantee first page rankings?', a: 'No. Google does not sell or guarantee positions, and Google itself warns against providers who promise them. A credible expert commits to a plan, transparent reporting and honest timelines instead.' },
+      { q: 'What should be included in a free SEO audit?', a: 'Current visibility, technical problems, how you compare with the sites ranking above you, missing keyword opportunities and a prioritised fix list. A generic report that could apply to any website is not a real audit.' },
+    ],
+    related: [
+      { label: 'SEO Expert in Islamabad: how the local market works', href: '/seo-expert/seo-expert-islamabad/' },
+      { label: 'SEO services in Pakistan', href: '/services/seo/' },
+      { label: 'Request a free SEO audit', href: '/contact/' },
+    ],
+  },
+];

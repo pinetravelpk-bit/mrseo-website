@@ -1,0 +1,248 @@
+import type { PostInput } from "@/lib/blog";
+import { SRC } from "./part1";
+
+const AIF = { label: "Google Search Central: AI features and your website", href: "https://developers.google.com/search/docs/appearance/ai-features" };
+const GENAI = { label: "Google Search Central: Guidance on using generative AI content", href: "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content" };
+const BOTS = { label: "OpenAI: Overview of OpenAI crawlers", href: "https://platform.openai.com/docs/bots" };
+const LLMS = { label: "llms.txt proposal", href: "https://llmstxt.org" };
+const SD = { label: "Google Search Central: Introduction to structured data", href: "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data" };
+
+export const PART9: PostInput[] = [
+  /* ------------------------------------------------------------------ 38 */
+  {
+    slug: "seo-expert-salary-pakistan",
+    title: "SEO Expert Salary in Pakistan: Skills and Career Opportunities",
+    keyword: "SEO expert salary Pakistan",
+    description: "Indicative SEO salaries in Pakistan for 2026 by experience level, what pushes pay higher, remote and freelance earnings, the skills employers pay for and how to progress faster.",
+    category: "Careers",
+    icon: "banknote",
+    accent: "amber",
+    answer: "SEO salaries in Pakistan vary by city, employer and skill. As an indicative 2026 guide, juniors often earn roughly PKR 40,000 to 80,000 a month, mid-level specialists PKR 80,000 to 180,000, and senior SEO leads or managers PKR 180,000 to 400,000 or more. Remote roles for overseas companies and established freelancers can earn more. Proven results, technical skills and client communication push pay up fastest.",
+    takeaways: [
+      "Salary ranges are indicative and vary by city, employer and remote versus local work.",
+      "Proof of results is the strongest lever for higher pay.",
+      "Technical SEO, analytics and client communication are the most valued skills.",
+      "Remote work for overseas clients often pays more than local roles.",
+      "Specialising in an industry or in technical SEO can accelerate growth.",
+    ],
+    body: [
+      { type: "h2", text: "Indicative SEO salaries in Pakistan" },
+      { type: "p", text: "There is no official salary survey specific to SEO in Pakistan. The figures below are **indicative ranges based on job offers and conversations we see in the market in 2026**, mainly in Islamabad, Rawalpindi, Lahore and Karachi. Treat them as a guide, not a guarantee." },
+      { type: "table", caption: "Indicative monthly SEO salaries in Pakistan (2026)", head: ["Level", "Typical experience", "Indicative monthly range"], rows: [
+        ["Intern or trainee", "0–6 months", "Unpaid to PKR 30,000"],
+        ["Junior SEO executive", "6 months–2 years", "PKR 40,000 – 80,000"],
+        ["SEO specialist", "2–4 years", "PKR 80,000 – 180,000"],
+        ["Senior SEO / team lead", "4–7 years", "PKR 180,000 – 300,000"],
+        ["SEO manager / head of SEO", "7+ years", "PKR 250,000 – 400,000+"],
+      ] },
+      { type: "callout", tone: "note", title: "Indicative ranges", text: "Pay varies widely between local agencies, in-house teams, software houses and remote employers. Remote roles paid in foreign currency can be significantly higher." },
+      { type: "h2", text: "What pushes SEO pay higher" },
+      { type: "bars", title: "Factors that raise earning potential", items: [
+        { label: "Documented results for clients", value: 5, display: "Very high" },
+        { label: "Technical SEO and analytics depth", value: 4, display: "High" },
+        { label: "Client communication in English", value: 4, display: "High" },
+        { label: "Industry specialisation", value: 3, display: "Medium" },
+        { label: "Certificates alone", value: 1, display: "Low" },
+      ], note: "Our view of what employers and clients pay for." },
+      { type: "h2", text: "Career paths in SEO" },
+      { type: "slides", title: "Where an SEO career can go", slides: [
+        { title: "Agency track", points: ["Executive to specialist to team lead", "Exposure to many industries", "Client management skills"] },
+        { title: "In-house track", points: ["Deep focus on one business", "Work with product and engineering", "Clear impact on revenue"] },
+        { title: "Remote track", points: ["Work for overseas companies", "Often higher pay", "Strong communication required"] },
+        { title: "Freelance and consulting", points: ["Own clients and pricing", "Requires sales and reliability", "Earnings depend on reputation"] },
+      ] },
+      { type: "h2", text: "Skills employers pay for" },
+      { type: "checklist", title: "Skills that command higher salaries", items: [
+        "Running technical audits and briefing developers",
+        "Using Search Console and Analytics to find opportunities",
+        "Planning content that matches search intent",
+        "Local SEO and Google Business Profile management",
+        "Reporting results in terms of leads and revenue",
+        "Optimising for AI search and answer engines",
+        "Clear written and spoken English with clients",
+      ] },
+      { type: "video", title: "Growing your SEO salary faster", steps: [
+        { title: "Keep a results log", text: "Record every project: the problem, what you did, and the measured result with dates." },
+        { title: "Go deeper technically", text: "Learn technical SEO and analytics well enough to brief developers confidently." },
+        { title: "Own client communication", text: "Volunteer to present reports; employers pay more for people clients trust." },
+        { title: "Specialise", text: "Pick an industry or skill, such as ecommerce or technical SEO, and become the go-to person." },
+        { title: "Negotiate with evidence", text: "At review time, present your results log rather than years of experience." },
+      ] },
+      { type: "p", text: "If you are starting out, our [SEO course](/courses/seo/) includes a free internship on live client accounts, which gives you the results log employers look for. See [all courses](/courses/) for options." },
+      { type: "sources", items: [SRC.starter] },
+    ],
+    faqs: [
+      { q: "What is the salary of an SEO expert in Pakistan?", a: "Indicatively, juniors often earn around PKR 40,000 to 80,000 a month, specialists PKR 80,000 to 180,000 and senior leads or managers PKR 180,000 to 400,000 or more, with remote roles often paying more." },
+      { q: "Do SEO freelancers in Pakistan earn more than employees?", a: "Established freelancers with steady overseas clients can earn more, but income is less predictable and depends on reputation and sales skills." },
+      { q: "Which SEO skills pay the most?", a: "Technical SEO, analytics, client communication, and proven results tied to leads and revenue. AI search optimisation is increasingly valued." },
+      { q: "Do SEO certificates increase salary?", a: "Only slightly on their own. Employers in Pakistan hire mainly on portfolio and demonstrated results." },
+    ],
+    related: [
+      { label: "SEO course with a free internship", href: "/courses/seo/" },
+      { label: "AI for marketing course", href: "/courses/ai-marketing/" },
+      { label: "All courses and fees", href: "/courses/" },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ 39 */
+  {
+    slug: "ai-seo-expert",
+    title: "AI SEO Expert: How AI Is Changing Search Optimization",
+    keyword: "AI SEO expert",
+    description: "How AI is changing SEO and what an AI SEO expert does differently: AI Overviews, AI-assisted research and content, structured answers, entity clarity, and the risks of scaled AI content.",
+    category: "AI search",
+    icon: "bot",
+    accent: "violet",
+    answer: "AI is changing SEO in two ways: search engines now show AI-generated answers such as Google’s AI Overviews, and SEO work itself uses AI for research, analysis and drafting. An AI SEO expert keeps the fundamentals strong, structures content so AI systems can understand and cite it, uses AI to work faster, and avoids mass-produced AI content that adds nothing new.",
+    takeaways: [
+      "AI answers in search raise the bar for clear, trustworthy, citable content.",
+      "Google says the same SEO fundamentals apply to its AI features.",
+      "AI speeds up research, audits and drafting, but needs expert review.",
+      "Scaled, low-value AI content can violate Google’s spam policies.",
+      "Clear entities, structured answers and original insight make content quotable.",
+    ],
+    body: [
+      { type: "h2", text: "Two ways AI is changing SEO" },
+      { type: "p", text: "First, **search itself is changing**. Google shows AI Overviews for many queries, and people increasingly ask ChatGPT, Gemini, Copilot and Perplexity for recommendations. Second, **the work is changing**. SEO professionals use AI to analyse data, cluster keywords, draft outlines and review technical issues faster. An **AI SEO expert** handles both." },
+      { type: "compare", title: "Traditional SEO versus AI-era SEO", left: { label: "Traditional focus", items: [
+        "Ranking ten blue links",
+        "Keywords repeated on the page",
+        "Traffic as the main metric",
+        "Content volume",
+      ] }, right: { label: "AI-era focus", items: [
+        "Being cited in AI answers as well as ranking",
+        "Clear entities, topics and direct answers",
+        "Enquiries and brand visibility across platforms",
+        "Original insight and verifiable expertise",
+      ] } },
+      { type: "h2", text: "What Google says about AI features" },
+      { type: "p", text: "Google’s guidance on AI features states that the same SEO best practices apply: pages must be indexed and eligible to appear with a snippet, content should be helpful and people-first, and there are no special technical requirements for AI Overviews. In other words, strong fundamentals are the price of entry." },
+      { type: "h2", text: "How an AI SEO expert uses AI responsibly" },
+      { type: "slides", title: "Good and bad uses of AI in SEO", slides: [
+        { title: "Good uses", points: ["Clustering thousands of keywords", "Summarising Search Console data", "Drafting outlines and first drafts for expert editing"] },
+        { title: "Good uses", points: ["Writing schema and regex", "Spotting patterns in crawl data", "Generating FAQ ideas from customer questions"] },
+        { title: "Risky uses", points: ["Publishing unedited AI articles at scale", "Inventing statistics or reviews", "Rewriting competitors’ content"] },
+        { title: "Always required", points: ["Fact-checking every claim", "Adding first-hand experience", "Human editorial review before publishing"] },
+      ] },
+      { type: "callout", tone: "warn", title: "Scaled content abuse", text: "Google’s spam policies cover generating many pages primarily to manipulate rankings without adding value, whether written by AI or people. AI is a tool; the standard for helpful content stays the same." },
+      { type: "h2", text: "Making content AI-friendly" },
+      { type: "checklist", title: "Content that AI systems can understand and cite", items: [
+        "A direct answer to the main question in the first 50–60 words",
+        "Clear headings phrased as the questions people ask",
+        "Specific facts: prices, timelines, locations, steps",
+        "Named authors with real expertise",
+        "Consistent business information across your site and the web",
+        "Structured data that matches visible content",
+        "Original insight that other pages do not have",
+      ] },
+      { type: "process", title: "How AI answer engines use your content", steps: [
+        { title: "Crawl", text: "Bots fetch your pages" },
+        { title: "Understand", text: "Entities, topics, facts" },
+        { title: "Retrieve", text: "Relevant passages chosen" },
+        { title: "Answer", text: "Summarised with citations" },
+      ] },
+      { type: "video", title: "Adapting your SEO for the AI era", steps: [
+        { title: "Strengthen fundamentals", text: "Fix indexing and technical issues; AI features rely on the same index." },
+        { title: "Answer first", text: "Add a short, direct answer at the top of key pages." },
+        { title: "Clarify your entity", text: "Make your business name, location, services and people consistent everywhere." },
+        { title: "Add expertise", text: "Include first-hand examples, data and author credentials." },
+        { title: "Track AI visibility", text: "Check how AI assistants describe your business and which pages they cite, and update content accordingly." },
+      ] },
+      { type: "p", text: "We teach practical AI workflows in our [AI for marketing course](/courses/ai-marketing/) and apply them in every [SEO engagement](/services/seo/)." },
+      { type: "sources", items: [AIF, GENAI, SRC.spam] },
+    ],
+    faqs: [
+      { q: "What does an AI SEO expert do?", a: "They optimise content to rank and be cited in AI-generated answers, use AI tools to speed up research and analysis, and keep content helpful, accurate and compliant with Google’s policies." },
+      { q: "Does AI-generated content rank on Google?", a: "Google judges content on quality, not on how it was produced. Unedited, low-value AI content produced at scale tends not to rank and can violate spam policies." },
+      { q: "Do AI Overviews need special optimisation?", a: "Google says no special requirements exist; pages must be indexed and eligible for snippets, and standard SEO best practices apply." },
+      { q: "Will AI replace SEO experts?", a: "AI is changing the work, not removing the need for judgement. Experts who use AI well and understand AI search are in higher demand." },
+    ],
+    related: [
+      { label: "AI for marketing course", href: "/courses/ai-marketing/" },
+      { label: "SEO services", href: "/services/seo/" },
+      { label: "Content marketing", href: "/services/content/" },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ 40 */
+  {
+    slug: "seo-for-chatgpt-and-google-ai-search",
+    title: "SEO Expert for ChatGPT and Google AI Search: A Practical Guide",
+    keyword: "GEO SEO expert",
+    description: "A practical guide to generative engine optimisation (GEO): how ChatGPT, Gemini, Perplexity and Google AI Overviews choose sources, what to change on your site, and how to measure AI visibility.",
+    category: "AI search",
+    icon: "sparkles",
+    accent: "teal",
+    answer: "Generative engine optimisation (GEO) means making your business easy for AI assistants such as ChatGPT, Gemini, Perplexity and Google AI Overviews to find, understand and cite. Allow the relevant search crawlers, keep pages indexed in Google and Bing, put direct answers and specific facts on key pages, keep your business information consistent across the web, earn mentions on trusted sites and track how AI tools describe you.",
+    takeaways: [
+      "AI assistants answer from content they can crawl, retrieve and trust.",
+      "Allowing search-focused AI crawlers in robots.txt is a deliberate choice; review it.",
+      "Being indexed in both Google and Bing widens your reach across AI tools.",
+      "Direct answers, specific facts and consistent entity information get cited.",
+      "Mentions on trusted third-party sites shape how AI describes your business.",
+    ],
+    body: [
+      { type: "h2", text: "What GEO, AEO and LLM SEO mean" },
+      { type: "p", text: "**Generative engine optimisation (GEO)**, **answer engine optimisation (AEO)** and **LLM SEO** describe overlapping ideas: optimising so AI systems use and cite your content when they answer questions. They build on traditional SEO rather than replacing it. A page that is not crawlable, indexed or trustworthy is unlikely to appear in AI answers either." },
+      { type: "stats", title: "Where AI answers come from", items: [
+        { value: "Crawl", label: "Pages AI search crawlers can access" },
+        { value: "Index", label: "Search indexes such as Google and Bing" },
+        { value: "Trust", label: "Sources with clear expertise and consistency" },
+        { value: "Mentions", label: "What other sites say about you" },
+      ] },
+      { type: "h2", text: "Step 1: Let the right crawlers in" },
+      { type: "p", text: "Check your robots.txt. OpenAI documents separate crawlers, including OAI-SearchBot for ChatGPT search and GPTBot for model training, so you can allow search visibility while choosing separately about training. Other assistants have their own crawlers. Make these decisions deliberately rather than by accident, and make sure firewall or CDN bot protection is not blocking legitimate search bots." },
+      { type: "h2", text: "Step 2: Be indexed widely" },
+      { type: "p", text: "Google’s AI features draw on Google’s index, and some other assistants draw on other search indexes, including Bing’s. Verify your site in both Google Search Console and Bing Webmaster Tools, submit sitemaps, and fix indexing errors." },
+      { type: "h2", text: "Step 3: Write answers AI can quote" },
+      { type: "compare", title: "Content AI tends to skip versus cite", left: { label: "Tends to be skipped", items: [
+        "Vague introductions before the answer",
+        "Claims without specifics",
+        "Facts locked in images or PDFs",
+        "Inconsistent details across pages",
+      ] }, right: { label: "Tends to be cited", items: [
+        "A direct answer in the first paragraph",
+        "Specific prices, timelines, locations and steps",
+        "Facts in text, tables and lists",
+        "Consistent, verifiable information",
+      ] } },
+      { type: "h2", text: "Step 4: Strengthen your entity" },
+      { type: "checklist", title: "Entity consistency checklist", items: [
+        "Identical business name, address and phone everywhere",
+        "An About page with founders, history and credentials",
+        "Organisation and LocalBusiness structured data matching visible content",
+        "Profiles on LinkedIn, Google Business Profile and relevant directories",
+        "Mentions on trusted local and industry sites",
+        "An llms.txt file summarising key pages (low effort, optional)",
+      ] },
+      { type: "callout", tone: "note", title: "About llms.txt", text: "llms.txt is a proposed convention for giving AI tools a plain-text summary of a site. It is not a ranking factor and support varies, but it is cheap to add. MrSEO.pk publishes one at /llms.txt." },
+      { type: "h2", text: "Step 5: Measure AI visibility" },
+      { type: "slides", title: "Tracking how AI describes your business", slides: [
+        { title: "Prompt checks", points: ["Ask assistants the questions customers ask", "Note whether you are mentioned", "Record which sources they cite"] },
+        { title: "Referral traffic", points: ["Watch Analytics for visits from AI assistants", "Track which pages they land on", "Compare conversion rates"] },
+        { title: "Accuracy", points: ["Check facts AI states about you", "Fix the sources of wrong information", "Update your own pages first"] },
+      ] },
+      { type: "video", title: "A 30-day GEO starter plan", steps: [
+        { title: "Week 1: access", text: "Review robots.txt and bot protection, verify the site in Google Search Console and Bing Webmaster Tools, and submit sitemaps." },
+        { title: "Week 2: answers", text: "Add direct answers and key facts to your ten most important pages." },
+        { title: "Week 3: entity", text: "Align business details everywhere, complete structured data and strengthen the About page." },
+        { title: "Week 4: mentions", text: "Earn mentions on trusted local and industry sites and update outdated listings." },
+        { title: "Ongoing: measure", text: "Run monthly prompt checks and track AI referral traffic." },
+      ] },
+      { type: "p", text: "Every MrSEO.pk page is built with these principles: direct answers, structured data and an llms.txt file. To apply them to your site, [request a free audit](/contact/) or learn the skills in our [AI for marketing course](/courses/ai-marketing/)." },
+      { type: "sources", items: [AIF, BOTS, LLMS, SD] },
+    ],
+    faqs: [
+      { q: "What is GEO in SEO?", a: "Generative engine optimisation: making your business easy for AI assistants like ChatGPT, Gemini, Perplexity and Google AI Overviews to find, understand and cite in their answers." },
+      { q: "How do I get my business mentioned by ChatGPT?", a: "Allow its search crawler, make sure your site is indexed, put direct answers and specific facts on key pages, keep business information consistent, and earn mentions on trusted sites." },
+      { q: "Is GEO different from SEO?", a: "It builds on SEO. Crawlability, indexing, helpful content and authority remain the foundation, with extra emphasis on direct answers, entity clarity and third-party mentions." },
+      { q: "Does llms.txt help with AI search?", a: "It is a proposed convention, not a ranking factor, and support varies. It is low effort to add and can help AI tools summarise your site." },
+      { q: "How can I measure visibility in AI search?", a: "Regularly ask AI assistants the questions your customers ask, record whether and how you are mentioned, and track referral traffic from AI tools in Analytics." },
+    ],
+    related: [
+      { label: "AI for marketing course", href: "/courses/ai-marketing/" },
+      { label: "SEO services", href: "/services/seo/" },
+      { label: "Request a free audit", href: "/contact/" },
+    ],
+  },
+];

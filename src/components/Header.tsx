@@ -138,6 +138,7 @@ export default function Header() {
                 </div>
               </li>
 
+              <li><Link href="/blog/" className={active('/blog')}>Blog</Link></li>
               <li><Link href="/about/" className={active('/about')}>About</Link></li>
               <li><Link href="/contact/" className={active('/contact')}>Contact</Link></li>
             </ul>
@@ -189,6 +190,7 @@ export default function Header() {
             ))}
           </div>
         </details>
+        <Link className="mob-plain" href="/blog/">SEO blog</Link>
         <Link className="mob-plain" href="/about/">About Syed Mudassir Shah</Link>
         <Link className="mob-plain" href="/contact/">Contact</Link>
         <div className="mob-cta">

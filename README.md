@@ -21,6 +21,15 @@ Copy `.env.example` to `.env.local` and fill it in:
 
 The design system is in `src/app/globals.css`, with colour, spacing and type tokens at the top. Body text is Inter and headings are Plus Jakarta Sans, both self-hosted through `next/font`. Icons are line icons from `lucide-react`, and the mapping from each service, course, city and industry to its icon is in `src/components/Icon.tsx`. The round logo mark (`public/logo-mark.png`) is cropped from the brand logo.
 
+## Blog
+
+Posts are structured data in `src/content/blog/` (one file per batch, plus `extras.ts` for extra sections and short meta descriptions). Each post has a quick answer, key takeaways, sections, FAQs and visual blocks: `slides`, `video` (an animated step-by-step guide), and infographics (`stats`, `bars`, `process`, `compare`, `checklist`). Feature images are generated per post at `/blog-images/<slug>.png`.
+
+**Scheduling:** posts publish in order, one every 2 hours from `SCHEDULE_START` in `src/lib/blog.ts`. A post can override its time with `publishAt`. The blog, sitemap and llms.txt refresh every minute, so posts go live on time without a deploy.
+
+- Preview every post locally regardless of schedule: run with `BLOG_PREVIEW=1` (never set this on the server).
+- Check all posts for missing blocks, broken internal links and long meta descriptions: `npm run check:blog`.
+
 ## Where things live
 
 | What | Where |
