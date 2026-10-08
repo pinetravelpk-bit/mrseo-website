@@ -3,7 +3,7 @@ import type { Deep } from "./deep";
 export const DEEP_A: Record<string, Deep> = {
   /* ------------------------------------------------------------------ 1 */
   "best-seo-expert-in-islamabad": {
-    updatedAt: "2026-10-09T03:00:00+05:00",
+    updatedAt: "2026-10-09T01:55:00+05:00",
     blocks: [
       { type: "h2", text: "How the best SEO experts in Islamabad think about your market" },
       { type: "p", text: "Ask a weak SEO provider about your business and you will hear about keywords and backlinks within the first minute. Ask a strong one and the first questions are about your customers: who buys, where they live or work, what they compare you against, how long they take to decide and what one new client is worth. That difference matters more in Islamabad than almost anywhere else in Pakistan, because the city rewards precision over volume." },
