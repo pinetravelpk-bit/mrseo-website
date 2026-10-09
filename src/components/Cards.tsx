@@ -1,9 +1,13 @@
 import Link from 'next/link';
 import { ArrowRight, ChevronRight, Mail } from 'lucide-react';
-import { cities, cityUrl, type Course, courseUrl, EMAIL, entries, industries, industryUrl, PHONE, services, serviceUrl, waLink } from '@/lib/site';
-import Icon, { includeIcon, WhatsAppIcon } from './Icon';
+import { cityUrl, type Course, courseUrl, entries, industryUrl, serviceUrl, waLink } from '@/lib/site';
+import { getSite } from '@/lib/cms';
+import Icon, { WhatsAppIcon } from './Icon';
+import Hl from './Hl';
 
-export function SectionHead({ eyebrow, title, sub, left }: { eyebrow?: string; title: React.ReactNode; sub?: React.ReactNode; left?: boolean }) {
+/** Section heading. Pass a node, or admin text where *starred words* are highlighted. */
+export function SectionHead({ eyebrow, title, sub, left }: { eyebrow?: string | null; title: React.ReactNode; sub?: React.ReactNode; left?: boolean }) {
+  if (typeof title === 'string') title = <Hl text={title} />;
   return (
     <div className={'sec-head' + (left ? ' left' : '')}>
       {eyebrow && <div className="eyebrow">{eyebrow}</div>}
@@ -27,13 +31,14 @@ export function Breadcrumb({ items }: { items: [string, string?][] }) {
   );
 }
 
-export function ServiceGrid({ exclude, foot = 'Learn more', title = (n: string) => n, headingLevel = 3 }: { exclude?: string; foot?: string; title?: (n: string) => string; headingLevel?: 2 | 3 }) {
+export async function ServiceGrid({ exclude, foot = 'Learn more', title = (n: string) => n, headingLevel = 3 }: { exclude?: string; foot?: string; title?: (n: string) => string; headingLevel?: 2 | 3 }) {
   const H = headingLevel === 2 ? 'h2' : 'h3';
+  const { services } = await getSite();
   return (
     <div className="grid grid-3">
       {entries(services).filter(([s]) => s !== exclude).map(([slug, svc]) => (
         <Link key={slug} href={serviceUrl(slug)} className="card">
-          <span className="ico-badge"><Icon name={`svc:${slug}`} /></span>
+          <span className="ico-badge"><Icon name={svc.icon} /></span>
           <H className="card-t">{title(svc.name)}</H>
           <p className="card-d">{svc.desc}</p>
           <div className="card-foot"><span className="link-arrow">{foot} <ArrowRight size={16} /></span></div>
@@ -43,12 +48,13 @@ export function ServiceGrid({ exclude, foot = 'Learn more', title = (n: string) 
   );
 }
 
-export function IndustryGrid({ exclude, suffix = '', showStats = false, compact = false }: { exclude?: string; suffix?: string; showStats?: boolean; compact?: boolean }) {
+export async function IndustryGrid({ exclude, suffix = '', showStats = false, compact = false }: { exclude?: string; suffix?: string; showStats?: boolean; compact?: boolean }) {
+  const { industries } = await getSite();
   return (
     <div className={'grid grid-4' + (compact ? ' m-compact' : '')}>
       {entries(industries).filter(([s]) => s !== exclude).map(([slug, ind]) => (
         <Link key={slug} href={industryUrl(slug)} className="card card-sm">
-          <span className="ico-badge"><Icon name={`ind:${slug}`} /></span>
+          <span className="ico-badge"><Icon name={ind.icon} /></span>
           <h3 className="card-t">{ind.name}{suffix}</h3>
           <div className="card-urdu" lang="ur">{ind.urdu}</div>
           <p className="card-d">{ind.desc}</p>
@@ -61,13 +67,14 @@ export function IndustryGrid({ exclude, suffix = '', showStats = false, compact 
 }
 
 /** City grid. The card leads with the city name; `prefix` is the small label above it ("SEO Expert", "SEO in"). */
-export function CityGrid({ exclude, prefix = 'SEO Expert', sub = 'note' }: { exclude?: string; prefix?: string; sub?: 'note' | 'comp' | 'note+comp' }) {
+export async function CityGrid({ exclude, prefix = 'SEO Expert', sub = 'note' }: { exclude?: string; prefix?: string; sub?: 'note' | 'comp' | 'note+comp' }) {
+  const { cities } = await getSite();
   return (
     <div className="grid grid-4 city-grid">
       {entries(cities).filter(([s]) => s !== exclude).map(([slug, city]) => (
         <Link key={slug} href={cityUrl(slug)} className="card city-card">
           <span className="city-top">
-            <span className="ico-badge blue"><Icon name={`city:${slug}`} /></span>
+            <span className="ico-badge blue"><Icon name={city.icon} /></span>
             <span className="city-urdu" lang="ur" dir="rtl">{city.urdu}</span>
           </span>
           <span className="city-kicker" aria-hidden="true">{prefix}</span>
@@ -85,7 +92,7 @@ export function CourseCard({ slug, c, variant }: { slug: string; c: Course; vari
   return (
     <Link href={courseUrl(slug)} className="card">
       <div className="cc-top">
-        <span className={'ico-badge' + (short ? ' blue' : '')}><Icon name={`course:${slug}`} /></span>
+        <span className={'ico-badge' + (short ? ' blue' : '')}><Icon name={c.icon} /></span>
         <span className={'cc-dur' + (short ? ' cc-dur-b' : '')}>{c.duration}</span>
       </div>
       <h3 className="card-t">{c.name}</h3>
@@ -101,25 +108,25 @@ export function CourseCard({ slug, c, variant }: { slug: string; c: Course; vari
   );
 }
 
-export function IncludeGrid({ items }: { items: { icon: string; t: string; d: string }[] }) {
+export function IncludeGrid({ items }: { items: { icon?: string | null; title: string; text: string }[] }) {
   return (
     <div className="grid grid-3">
       {items.map((inc) => (
-        <div className="card" key={inc.t}>
-          <span className="ico-badge"><Icon name={includeIcon(inc.t)} /></span>
-          <h3 className="card-t">{inc.t}</h3>
-          <p className="card-d">{inc.d}</p>
+        <div className="card" key={inc.title}>
+          <span className="ico-badge"><Icon name={inc.icon || 'award'} /></span>
+          <h3 className="card-t">{inc.title}</h3>
+          <p className="card-d">{inc.text}</p>
         </div>
       ))}
     </div>
   );
 }
 
-export function Steps({ steps, four }: { steps: [string, string][]; four?: boolean }) {
+export function Steps({ steps, four }: { steps: { title: string; text: string }[]; four?: boolean }) {
   return (
     <>
     <ol className={'steps m-scroll' + (four ? ' four' : '')}>
-      {steps.map(([t, d], i) => (
+      {steps.map(({ title: t, text: d }, i) => (
         <li className="step" key={t}>
           <span className="step-n">{i + 1}</span>
           <h3 className="step-t">{t}</h3>
@@ -142,16 +149,18 @@ export function StatStrip({ stats }: { stats: [string, string, ('g' | 'b' | '')?
   );
 }
 
-export function CtaContacts() {
+export async function CtaContacts() {
+  const { settings: s } = await getSite();
   return (
     <div className="cta-contact">
-      <a href={waLink()} target="_blank" rel="noopener"><WhatsAppIcon size={17} /> {PHONE}</a>
-      <a href={`mailto:${EMAIL}`}><Mail size={17} aria-hidden="true" /> {EMAIL}</a>
+      <a href={waLink(s.whatsapp)} target="_blank" rel="noopener"><WhatsAppIcon size={17} /> {s.phone}</a>
+      <a href={`mailto:${s.email}`}><Mail size={17} aria-hidden="true" /> {s.email}</a>
     </div>
   );
 }
 
-export function CtaPanel({ title, text, children, note }: { title: React.ReactNode; text: string; children: React.ReactNode; note?: string }) {
+export function CtaPanel({ title, text, children, note }: { title: React.ReactNode; text?: string | null; children: React.ReactNode; note?: string | null }) {
+  if (typeof title === 'string') title = <Hl text={title} />;
   return (
     <section id="cta-section" className="section-sm">
       <div className="container">
@@ -173,9 +182,10 @@ export function CtaPanel({ title, text, children, note }: { title: React.ReactNo
 
 /** Hero block for every inner page: breadcrumb, optional icon and eyebrow, title, intro, extras, actions, facts. */
 export function PageHero({ crumbs, icon, eyebrow, sub, title, desc, children, actions, facts, center }: {
-  crumbs: [string, string?][]; icon?: string; eyebrow?: string; sub?: string; title: React.ReactNode; desc?: React.ReactNode;
+  crumbs: [string, string?][]; icon?: string; eyebrow?: string | null; sub?: string; title: React.ReactNode; desc?: React.ReactNode;
   children?: React.ReactNode; actions?: React.ReactNode; facts?: [string, string, ('g' | 'b' | '')?][]; center?: boolean;
 }) {
+  if (typeof title === 'string') title = <Hl text={title} />;
   return (
     <div className={'page-hero' + (center ? ' center' : '')}>
       <div className="container">

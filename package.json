@@ -6,15 +6,27 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "convert": "node scripts/convert-php.mjs",
-    "check:blog": "npx -y tsx@4.20.3 scripts/check-blog.ts"
+    "payload": "payload",
+    "generate:importmap": "payload generate:importmap",
+    "generate:types": "payload generate:types",
+    "migrate": "payload migrate",
+    "migrate:create": "payload migrate:create",
+    "seed": "npx -y tsx@4.20.3 --env-file=.env scripts/seed.ts",
+    "convert": "node scripts/convert-php.mjs"
   },
   "dependencies": {
+    "@payloadcms/db-sqlite": "3.90.2",
+    "@payloadcms/next": "3.90.2",
+    "@payloadcms/richtext-lexical": "3.90.2",
+    "@payloadcms/ui": "3.90.2",
+    "graphql": "16.11.0",
     "lucide-react": "0.511.0",
-    "next": "15.5.27",
+    "next": "15.4.11",
     "nodemailer": "6.10.1",
+    "payload": "3.90.2",
     "react": "19.1.1",
-    "react-dom": "19.1.1"
+    "react-dom": "19.1.1",
+    "sharp": "0.34.3"
   },
   "devDependencies": {
     "@types/node": "22.18.0",
@@ -22,5 +34,6 @@
     "@types/react": "19.1.12",
     "@types/react-dom": "19.1.9",
     "typescript": "5.9.2"
-  }
+  },
+  "type": "module"
 }

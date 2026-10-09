@@ -5,3 +5,8 @@ out
 next-env.d.ts
 *.tsbuildinfo
 .claude/
+
+# Admin (Payload CMS) database and uploads
+.env
+/data/
+/media/

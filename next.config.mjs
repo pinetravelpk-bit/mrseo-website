@@ -1,3 +1,4 @@
+import { withPayload } from '@payloadcms/next/withPayload';
 /** @type {import('next').NextConfig} */
 const CITIES = 'karachi|lahore|islamabad|rawalpindi|peshawar|quetta|faisalabad|multan';
 const INDUSTRIES = 'travel-tourism|ecommerce|cosmetics|medical|schools|hotels|clinics|real-estate';
@@ -16,4 +17,4 @@ const nextConfig = {
     ];
   },
 };
-export default nextConfig;
+export default withPayload(nextConfig, { devBundleServerPackages: false });

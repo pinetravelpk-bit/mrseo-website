@@ -1,49 +1,78 @@
-# MrSEO.pk (Next.js)
+# MrSEO.pk (Next.js + admin)
 
-This is a Next.js 15 (App Router) rebuild of the `mrseo-theme-v4_3_1` WordPress theme. It keeps every page, every piece of copy, the design (`src/app/globals.css` is the theme's `main.css`), the structured data, the forms and the old WordPress URLs.
+This is a Next.js 15 (App Router) rebuild of the `mrseo-theme-v4_3_1` WordPress theme. It keeps every page, every piece of copy, the design, the structured data, the forms and the old WordPress URLs. All content is managed in a built-in admin panel.
 
-Syed Mudassir Shah is now described as **Islamabad based** everywhere the theme said Karachi. That covers the hero card, the "In short" answers, the About page, the contact sidebar, the footer, the contact FAQ, the business address in the schema, the Person schema and `/llms.txt`. Mentions of Karachi as a market (the Karachi city guide, client examples) are unchanged.
+Syed Mudassir Shah is described as **Islamabad based** everywhere the theme said Karachi. Mentions of Karachi as a market (the Karachi city guide, client examples) are unchanged.
+
+## Admin
+
+All content is managed at **/admin**. The admin is Payload CMS 3, embedded in this Next.js app, with a SQLite database.
+
+| Admin section | What it controls |
+|---|---|
+| Inbox → Queries | Every contact-form enquiry and course application. Each has a status (New, Contacted, Converted, Closed, Spam) and private notes. |
+| Content → Blog posts | Posts and their body blocks: paragraphs, slides, video-style guides, stats, bars, process steps, comparisons, checklists, tables, quotes and sources. Also FAQs, the publish time and an optional custom feature image. |
+| Content → Extra pages | Simple pages at `/slug/`, such as Privacy Policy and Terms. These were imported unpublished, so review them before publishing. |
+| Content → Case studies | Published case studies appear at `/case-studies/`. That page stays noindex until at least one is published. |
+| Content → Media library | Uploaded images and PDFs. |
+| Website → Services, Courses, Locations, Industries | Names, cards, fees, page content, FAQs, SEO title and description, order and icon. |
+| Website → Testimonials | The homepage section appears once at least one testimonial exists. |
+| Page settings | Site settings (phone, WhatsApp, email, campus, socials, footer), Homepage, About, Contact, Courses page and the listing pages. |
+
+Saving anything clears the page cache, so changes are live on the next page view. New posts, services, courses and locations get their pages without a deploy. Posts publish themselves at their publish time.
+
+In headings, wrap words in `*asterisks*` to show them in green. In blog text, `**bold**` and `[text](/url/)` work.
 
 ## Run
 
 ```bash
 npm install
-npm run dev        # http://localhost:3000
-npm run build && npm start
+cp .env.example .env      # set PAYLOAD_SECRET
+npm run migrate           # create the database (data/mrseo.db)
+npm run seed              # import the original content and create the first admin user (prints the password)
+npm run dev               # http://localhost:3000, admin at /admin
 ```
 
-Copy `.env.example` to `.env.local` and fill it in:
+Environment:
 
+- `PAYLOAD_SECRET`: required. A random string; keep it secret.
+- `DATABASE_URL`: the SQLite file. Default `file:./data/mrseo.db`; on the server, `file:/var/www/mrseo/shared/mrseo.db`.
+- `MEDIA_DIR`: where uploads are stored. On the server, `/var/www/mrseo/shared/media`.
 - `NEXT_PUBLIC_SITE_URL`: used for canonical tags, the sitemap and the schema.
-- `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `MAIL_TO`: required for the contact and course application forms. For Gmail, use an app password. Until these are set, the forms return the "please WhatsApp us" fallback message.
+- `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `MAIL_TO`: optional. Set these to get an email for each query. Queries are always saved in the admin, even without SMTP.
+
+**Changing the content model:** after editing fields in `src/cms/`, run `npm run migrate:create <name>` and commit the new file in `src/migrations/`. Production applies pending migrations automatically when it starts.
 
 ## Design
 
-The design system is in `src/app/globals.css`, with colour, spacing and type tokens at the top. Body text is Inter and headings are Plus Jakarta Sans, both self-hosted through `next/font`. Icons are line icons from `lucide-react`, and the mapping from each service, course, city and industry to its icon is in `src/components/Icon.tsx`. The round logo mark (`public/logo-mark.png`) is cropped from the brand logo.
-
-## Blog
-
-Posts are structured data in `src/content/blog/` (one file per batch, plus `extras.ts` for extra sections and short meta descriptions). Each post has a quick answer, key takeaways, sections, FAQs and visual blocks: `slides`, `video` (an animated step-by-step guide), and infographics (`stats`, `bars`, `process`, `compare`, `checklist`). Feature images are generated per post at `/blog-images/<slug>.png`.
-
-**Scheduling:** posts publish in order, one every 2 hours from `SCHEDULE_START` in `src/lib/blog.ts`. A post can override its time with `publishAt`. The blog, sitemap and llms.txt refresh every minute, so posts go live on time without a deploy.
-
-- Preview every post locally regardless of schedule: run with `BLOG_PREVIEW=1` (never set this on the server).
-- Check all posts for missing blocks, broken internal links and long meta descriptions: `npm run check:blog`.
+The design system is in `src/app/(frontend)/globals.css`. Body text is Inter and headings are Plus Jakarta Sans, both self-hosted through `next/font`. Icons are line icons from `lucide-react`, mapped in `src/components/Icon.tsx`; the icon names offered in the admin are listed in `src/lib/icons.ts`. Each post gets a generated feature image at `/blog-images/<slug>.png` unless a custom image is uploaded. To preview scheduled posts locally, run with `BLOG_PREVIEW=1`. Never set this on the server.
 
 ## Where things live
 
 | What | Where |
 |---|---|
-| Phone, email, WhatsApp, base city, campus | `src/lib/site.ts` |
-| Cities, industries, services, courses (fees, dates, seats) and all long-form page content | `src/data/generated/*.json` |
-| Testimonials (the section stays hidden while this is empty, as in the theme) | `src/data/testimonials.ts` |
+| Admin config: collections, globals, post blocks | `src/payload.config.ts`, `src/cms/` |
+| Data access for pages | `src/lib/cms.ts` (and `src/lib/blog.ts` for posts) |
+| Website pages | `src/app/(frontend)/` |
+| Admin routes (generated by Payload) | `src/app/(payload)/` |
 | Schema / JSON-LD | `src/lib/schema.tsx` |
-| Pages | `src/app/**/page.tsx` |
+| Original content used by the one-time import | `scripts/seed-data/`, `scripts/seed.ts` |
 
-The JSON in `src/data/generated/` was converted from the theme's PHP arrays by `npm run convert`, which reads `scripts/php-source/`. You can edit either the JSON directly or the PHP source and then run the converter again. If you run it again, it overwrites the JSON.
+## Server
+
+`/usr/local/bin/mrseo-deploy` builds a new release from GitHub and switches the site to it. The database and uploads live in `/var/www/mrseo/shared/`, outside the release folders. They are backed up daily to `/var/backups/mrseo/`, and 14 days are kept. Secrets are in `/etc/mrseo/mrseo.env`.
 
 ## URLs (same as WordPress)
 
-`/`, `/about/`, `/contact/`, `/services/` and `/services/{seo,ppc,social-media,web-design,local-seo,content}/`, `/courses/` and `/courses/{slug}/` (12 courses), `/seo-expert/` and `/seo-expert/seo-expert-{city}/` (8 cities), `/seo-for/` and `/seo-for/seo-for-{industry}/` (8 industries), `/blog/`, `/case-studies/`, `/llms.txt`, `/sitemap.xml`, `/robots.txt`.
+- `/`, `/about/`, `/contact/`
+- `/services/` and `/services/{seo,ppc,social-media,web-design,local-seo,content}/`
+- `/courses/` and `/courses/{slug}/`
+- `/seo-expert/` and `/seo-expert/seo-expert-{city}/`
+- `/seo-for/` and `/seo-for/seo-for-{industry}/`
+- `/blog/` and `/blog/{slug}/`
+- `/case-studies/` and `/case-studies/{slug}/`
+- Extra pages at `/{slug}/`
+- `/llms.txt`, `/sitemap.xml`, `/robots.txt`
+- The admin is at `/admin/`.
 
 Redirects: `/sitemap_index.xml` goes to `/sitemap.xml`, and clean slugs like `/seo-expert/karachi/` go to their full URL.

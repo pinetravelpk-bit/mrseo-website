@@ -1,17 +1,19 @@
 import { ImageResponse } from 'next/og';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import { ACCENTS, ALL_POSTS, postBySlug } from '@/lib/blog';
+import { ACCENTS, allPosts, postBySlug } from '@/lib/blog';
+import { getSite } from '@/lib/cms';
 import { ICON_NODES } from '@/components/blog/iconNodes';
 
 /* Feature image for each post, designed in code: brand navy, the post's accent
    colour and icon, its category and title, and one of three layout variants.
-   Rendered once at build time and served as a static PNG. */
+   Rendered once, cached, and regenerated when posts change in the admin. */
 
 export const dynamic = 'force-static';
-export const dynamicParams = false;
-export function generateStaticParams() {
-  return ALL_POSTS.map((p) => ({ slug: `${p.slug}.png` }));
+export const revalidate = 3600;
+export const dynamicParams = true;
+export async function generateStaticParams() {
+  return (await allPosts()).map((p) => ({ slug: `${p.slug}.png` }));
 }
 
 const W = 1200, H = 630;
@@ -30,7 +32,7 @@ function IconSvg({ name, size, color }: { name: string; size: number; color: str
 
 export async function GET(_req: Request, { params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = postBySlug(slug.replace(/\.png$/, ''));
+  const [post, { settings: st }] = await Promise.all([postBySlug(slug.replace(/\.png$/, '')), getSite()]);
   if (!post) return new Response('Not found', { status: 404 });
 
   const accent = ACCENTS[post.accent].hex;
@@ -80,8 +82,8 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={markSrc} width={58} height={58} style={{ borderRadius: 999, border: `3px solid ${accent}` }} alt="" />
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <div style={{ display: 'flex', fontSize: 24, fontWeight: 800 }}>Syed Mudassir Shah</div>
-              <div style={{ display: 'flex', fontSize: 20, color: '#8a9db8' }}>MrSEO.pk · SEO consultant, Islamabad</div>
+              <div style={{ display: 'flex', fontSize: 24, fontWeight: 800 }}>{st.ownerName}</div>
+              <div style={{ display: 'flex', fontSize: 20, color: '#8a9db8' }}>MrSEO.pk · SEO consultant, {st.baseCity}</div>
             </div>
           </div>
         </div>
@@ -100,6 +102,6 @@ export async function GET(_req: Request, { params }: { params: Promise<{ slug: s
         { name: 'Jakarta', data: medium, weight: 500, style: 'normal' },
         { name: 'Jakarta', data: extraBold, weight: 800, style: 'normal' },
       ],
-      headers: { 'Cache-Control': 'public, max-age=86400, immutable' } },
+      headers: { 'Cache-Control': 'public, max-age=3600' } },
   );
 }

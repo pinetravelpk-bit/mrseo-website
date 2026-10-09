@@ -1,18 +1,21 @@
 import { postUrl, publishedPosts } from '@/lib/blog';
-import { abs, BASE_CITY, CAMPUS, CAMPUS_AREA, cities, cityUrl, courses, courseUrl, EMAIL, industries, industryUrl, services, serviceUrl, WA } from '@/lib/site';
+import { abs, cityUrl, courseUrl, industryUrl, serviceUrl } from '@/lib/site';
+import { getSite } from '@/lib/cms';
 
 /* A plain-text summary for AI crawlers, served at /llms.txt. Kept factual and short. */
 export const revalidate = 60;
 
-export function GET() {
+export async function GET() {
+  const [{ settings: st, services, courses, cities, industries }, ps] = await Promise.all([getSite(), publishedPosts()]);
+  const { baseCity: BASE_CITY, campus: CAMPUS, campusArea: CAMPUS_AREA, email: EMAIL, whatsapp: WA, ownerName } = st;
   const L: string[] = [
     '# MrSEO.pk', '',
     '> SEO and digital marketing consultancy for businesses in Pakistan.',
-    `> Founded 2010 by Syed Mudassir Shah. Based in ${BASE_CITY}, working nationwide.`, '',
+    `> Founded 2010 by ${ownerName}. Based in ${BASE_CITY}, working nationwide.`, '',
     '## About', '',
     'MrSEO.pk provides search engine optimisation, local search visibility, paid search',
     'and web development for Pakistani businesses. Work is delivered directly by',
-    'Syed Mudassir Shah rather than routed through an account management layer.', '',
+    `${ownerName} rather than routed through an account management layer.`, '',
     `Contact: ${EMAIL} | WhatsApp +${WA}`,
     'Languages: English, Urdu', '',
     '## Services', '',
@@ -32,7 +35,7 @@ export function GET() {
     'Each page covers how that sector behaves in Pakistani search, what ranks,',
     'seasonality and content priorities.', '',
     ...Object.entries(industries).map(([s, i]) => `- [${i.name}](${abs(industryUrl(s))})`),
-    ...(() => { const ps = publishedPosts(); return ps.length ? ['', '## Blog guides', '', 'Each guide opens with a short direct answer, then the detail.', '', ...ps.map((p) => `- [${p.title}](${abs(postUrl(p.slug))}): ${p.answer}`)] : []; })(),
+    ...(ps.length ? ['', '## Blog guides', '', 'Each guide opens with a short direct answer, then the detail.', '', ...ps.map((p) => `- [${p.title}](${abs(postUrl(p.slug))}): ${p.answer}`)] : []),
     '', '## Coverage', '',
     'Cities: ' + Object.values(cities).map((c) => c.name).join(', '),
     'Industries: ' + Object.values(industries).map((i) => i.name).join(', '),

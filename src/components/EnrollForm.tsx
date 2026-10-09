@@ -1,15 +1,17 @@
 'use client';
-import { CAMPUS, cities, courses, coursesByTier, PHONE, waLink } from '@/lib/site';
-import { FormMessage, useFormSubmit } from './ContactForm';
+import { waLink } from '@/lib/site';
+import { FormMessage, useFormSubmit, type ContactInfo } from './ContactForm';
 import Icon, { WhatsAppIcon } from './Icon';
 
 /* Course application form. Posts to its own endpoint so applications
    do not arrive looking like SEO enquiries. Pass a course slug to preselect it. */
-export default function EnrollForm({ selected = '' }: { selected?: string }) {
-  const { busy, msg, onSubmit } = useFormSubmit('/api/enroll');
-  const pro = coursesByTier('pro');
-  const short = coursesByTier('short');
-  const selectedName = courses[selected]?.name ?? '';
+type CourseOption = { slug: string; name: string; duration: string; fee: string };
+
+export default function EnrollFormView({ info, campus, campusCity, cities, pro, short, selected = '' }: {
+  info: ContactInfo; campus: string; campusCity: string; cities: string[]; pro: CourseOption[]; short: CourseOption[]; selected?: string;
+}) {
+  const { busy, msg, onSubmit } = useFormSubmit('/api/enroll', info.wa);
+  const selectedName = [...pro, ...short].find((c) => c.slug === selected)?.name ?? '';
 
   return (
     <div className="enroll-wrap" id="enroll">
@@ -33,9 +35,9 @@ export default function EnrollForm({ selected = '' }: { selected?: string }) {
             </div>
             <div className="cf-group">
               <label className="cf-label" htmlFor="en_city">Your city</label>
-              <select className="cf-select" id="en_city" name="en_city" defaultValue="Rawalpindi">
+              <select className="cf-select" id="en_city" name="en_city" defaultValue={campusCity}>
                 <option value="">Select a city</option>
-                {Object.values(cities).map((c) => <option key={c.name} value={c.name}>{c.name}</option>)}
+                {cities.map((c) => <option key={c} value={c}>{c}</option>)}
                 <option value="Other">Other</option>
               </select>
             </div>
@@ -44,18 +46,18 @@ export default function EnrollForm({ selected = '' }: { selected?: string }) {
               <select className="cf-select" id="en_course" name="en_course" required defaultValue={selectedName}>
                 <option value="">Select a course</option>
                 <optgroup label="Professional courses, internship included">
-                  {pro.map(([slug, c]) => <option key={slug} value={c.name}>{c.name} — {c.duration}, PKR {c.fee}</option>)}
+                  {pro.map((c) => <option key={c.slug} value={c.name}>{c.name} — {c.duration}, PKR {c.fee}</option>)}
                 </optgroup>
                 <optgroup label="Short courses, from PKR 2,000">
-                  {short.map(([slug, c]) => <option key={slug} value={c.name}>{c.name} — {c.duration}, PKR {c.fee}</option>)}
+                  {short.map((c) => <option key={c.slug} value={c.name}>{c.name} — {c.duration}, PKR {c.fee}</option>)}
                 </optgroup>
                 <option value="Not sure yet">Not sure yet, please advise</option>
               </select>
             </div>
             <div className="cf-group">
               <label className="cf-label" htmlFor="en_mode">Preferred mode</label>
-              <select className="cf-select" id="en_mode" name="en_mode" defaultValue="On-site Rawalpindi">
-                <option value="On-site Rawalpindi">On-site, Scheme 3 Rawalpindi</option>
+              <select className="cf-select" id="en_mode" name="en_mode" defaultValue={`On-site ${campusCity}`}>
+                <option value={`On-site ${campusCity}`}>On-site, {campus}</option>
                 <option value="Live online">Live online</option>
                 <option value="Either">Either works</option>
               </select>
@@ -86,14 +88,14 @@ export default function EnrollForm({ selected = '' }: { selected?: string }) {
           <span className="ico-badge blue"><Icon name="pin" /></span>
           <div>
             <div className="side-t">Where classes are held</div>
-            <div className="side-v">{CAMPUS}<small>Easy from Satellite Town, Saddar, Chaklala and most of Islamabad. Online batches open to every city.</small></div>
+            <div className="side-v">{campus}<small>Easy from Satellite Town, Saddar, Chaklala and most of Islamabad. Online batches open to every city.</small></div>
           </div>
         </div>
         <div className="side-card">
           <span className="ico-badge"><WhatsAppIcon /></span>
           <div>
             <div className="side-t">Ask before you apply</div>
-            <div className="side-v"><a href={waLink('Hi, I want to ask about the digital marketing courses.')} target="_blank" rel="noopener">{PHONE}</a><small>Usually replies within an hour, 9am to 10pm</small></div>
+            <div className="side-v"><a href={waLink(info.wa, 'Hi, I want to ask about the digital marketing courses.')} target="_blank" rel="noopener">{info.phone}</a><small>Usually replies within an hour, 9am to 10pm</small></div>
           </div>
         </div>
         <div className="side-card">

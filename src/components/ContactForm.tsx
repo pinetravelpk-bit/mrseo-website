@@ -1,16 +1,16 @@
 'use client';
 import { useState, type FormEvent } from 'react';
 import { CircleCheck, TriangleAlert } from 'lucide-react';
-import { cities, EMAIL, PHONE, services, waLink, WA } from '@/lib/site';
+import { waLink } from '@/lib/site';
 import Icon, { WhatsAppIcon } from './Icon';
 
-export async function submitForm(url: string, form: HTMLFormElement) {
+export async function submitForm(url: string, form: HTMLFormElement, wa: string) {
   const body = Object.fromEntries(new FormData(form).entries());
   try {
     const res = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
     return (await res.json()) as { success: boolean; data: string };
   } catch {
-    return { success: false, data: `Network error. Please WhatsApp us on +${WA} instead.` };
+    return { success: false, data: `Network error. Please WhatsApp us on +${wa} instead.` };
   }
 }
 
@@ -23,7 +23,7 @@ export function FormMessage({ msg, id }: { msg: { ok: boolean; text: string } | 
   );
 }
 
-export function useFormSubmit(url: string) {
+export function useFormSubmit(url: string, wa: string) {
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
@@ -32,7 +32,7 @@ export function useFormSubmit(url: string) {
     if (!form.checkValidity()) { form.reportValidity(); return; }
     setBusy(true);
     setMsg(null);
-    const json = await submitForm(url, form);
+    const json = await submitForm(url, form, wa);
     setMsg({ ok: json.success, text: json.data });
     if (json.success) form.reset();
     setBusy(false);
@@ -40,8 +40,11 @@ export function useFormSubmit(url: string) {
   return { busy, msg, onSubmit };
 }
 
-export default function ContactForm() {
-  const { busy, msg, onSubmit } = useFormSubmit('/api/contact');
+export type ContactInfo = { wa: string; phone: string; email: string; owner: string; years: string; sites: string; clients: string; baseCity: string };
+
+/* Rendered through the server wrapper in Forms.tsx, which loads these lists from the admin. */
+export default function ContactFormView({ info, cities, services }: { info: ContactInfo; cities: string[]; services: string[] }) {
+  const { busy, msg, onSubmit } = useFormSubmit('/api/contact', info.wa);
 
   return (
     <div className="contact-wrap">
@@ -71,7 +74,7 @@ export default function ContactForm() {
               <label className="cf-label" htmlFor="cf_city">Your city</label>
               <select className="cf-select" id="cf_city" name="cf_city" defaultValue="">
                 <option value="">Select a city</option>
-                {Object.values(cities).map((c) => <option key={c.name} value={c.name}>{c.name}</option>)}
+                {cities.map((c) => <option key={c} value={c}>{c}</option>)}
                 <option value="Other">Other</option>
               </select>
             </div>
@@ -79,7 +82,7 @@ export default function ContactForm() {
               <label className="cf-label" htmlFor="cf_service">What do you need help with</label>
               <select className="cf-select" id="cf_service" name="cf_service" defaultValue="">
                 <option value="">Select a service</option>
-                {Object.values(services).map((s) => <option key={s.name} value={s.name}>{s.name}</option>)}
+                {services.map((s) => <option key={s} value={s}>{s}</option>)}
                 <option value="Full Digital Marketing">Not sure yet</option>
                 <option value="Course enquiry">Course enquiry (student)</option>
               </select>
@@ -107,15 +110,15 @@ export default function ContactForm() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo-mark.png" alt="" width={54} height={54} className="pc-av" />
             <div>
-              <div className="pc-name">Syed Mudassir Shah</div>
+              <div className="pc-name">{info.owner}</div>
               <div className="pc-role">SEO consultant and founder</div>
             </div>
           </div>
-          <p>SEO consultant working on Pakistani search since 2010. Islamabad based, working with businesses nationwide.</p>
+          <p>SEO consultant working on Pakistani search since 2010. {info.baseCity} based, working with businesses nationwide.</p>
           <div className="mini-stats">
-            <div><b>14+</b><span>Years</span></div>
-            <div><b>50+</b><span>Websites</span></div>
-            <div><b>400+</b><span>Clients</span></div>
+            <div><b>{info.years}</b><span>Years</span></div>
+            <div><b>{info.sites}</b><span>Websites</span></div>
+            <div><b>{info.clients}</b><span>Clients</span></div>
           </div>
         </div>
 
@@ -123,21 +126,21 @@ export default function ContactForm() {
           <span className="ico-badge"><WhatsAppIcon /></span>
           <div>
             <div className="side-t">WhatsApp, fastest</div>
-            <div className="side-v"><a href={waLink('Hi, I would like a free SEO audit.')} target="_blank" rel="noopener">{PHONE}</a><small>Usually replies within an hour</small></div>
+            <div className="side-v"><a href={waLink(info.wa, 'Hi, I would like a free SEO audit.')} target="_blank" rel="noopener">{info.phone}</a><small>Usually replies within an hour</small></div>
           </div>
         </div>
         <div className="side-card">
           <span className="ico-badge blue"><Icon name="mail" /></span>
           <div>
             <div className="side-t">Email</div>
-            <div className="side-v"><a href={`mailto:${EMAIL}`}>{EMAIL}</a><small>Usually replies the same day</small></div>
+            <div className="side-v"><a href={`mailto:${info.email}`}>{info.email}</a><small>Usually replies the same day</small></div>
           </div>
         </div>
         <div className="side-card">
           <span className="ico-badge blue"><Icon name="pin" /></span>
           <div>
             <div className="side-t">Working across Pakistan</div>
-            <div className="side-p">{Object.values(cities).map((c) => c.name).join(', ')}</div>
+            <div className="side-p">{cities.join(', ')}</div>
           </div>
         </div>
       </div>

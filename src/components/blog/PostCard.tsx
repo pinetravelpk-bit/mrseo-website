@@ -6,7 +6,7 @@ export default function PostCard({ post, featured }: { post: Post; featured?: bo
   return (
     <Link href={postUrl(post.slug)} className={'card post-card' + (featured ? ' featured' : '')} style={{ ['--acc' as string]: ACCENTS[post.accent].hex }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={postImage(post.slug)} alt="" width={1200} height={630} loading={featured ? 'eager' : 'lazy'} className="post-thumb" />
+      <img src={postImage(post)} alt="" width={1200} height={630} loading={featured ? 'eager' : 'lazy'} className="post-thumb" />
       <div className="post-body">
         <div className="post-meta">
           <span className="post-cat">{post.category}</span>

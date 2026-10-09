@@ -1,13 +1,13 @@
 // Converts the PHP data arrays from the original WordPress theme into JSON.
 // Usage: node scripts/convert-php.mjs
-// Reads scripts/php-source/*.php, writes src/data/generated/*.json
+// Reads scripts/php-source/*.php, writes scripts/seed-data/generated/*.json
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const srcDir = path.join(root, 'scripts', 'php-source');
-const outDir = path.join(root, 'src', 'data', 'generated');
+const outDir = path.join(root, 'scripts', 'seed-data', 'generated');
 fs.mkdirSync(outDir, { recursive: true });
 
 const NAMED = { bull: '•', mdash: '—', ndash: '–', hellip: '…', rarr: '→', larr: '←', middot: '·', rsaquo: '›', amp: '&', nbsp: ' ', quot: '"' };

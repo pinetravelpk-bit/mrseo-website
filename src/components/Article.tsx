@@ -18,12 +18,12 @@ export function AnswerBox({ question, answer }: { question: string; answer?: str
 }
 
 /* Article body. Content is trusted, theme-authored HTML. */
-export function Sections({ sections }: { sections: Section[] }) {
+export function Sections({ sections, idPrefix = '' }: { sections: Section[]; idPrefix?: string }) {
   return (
     <>
       {sections.map((s) => (
         <section className="art-block" key={s.h2}>
-          <h2 id={anchor(s.h2)}>{s.h2}</h2>
+          <h2 id={idPrefix + anchor(s.h2)}>{s.h2}</h2>
           <div dangerouslySetInnerHTML={{ __html: s.html }} />
         </section>
       ))}
@@ -42,20 +42,20 @@ export function Faqs({ faqs, heading = 'Frequently Asked Questions', hideHeading
   );
 }
 
-export function Byline() {
+export function Byline({ owner }: { owner: string }) {
   return (
     <div className="art-byline">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/logo-mark.png" alt="" width={46} height={46} />
       <div>
-        <span className="ab-name">Written by <Link href="/about/" rel="author">Syed Mudassir Shah</Link></span>
+        <span className="ab-name">Written by <Link href="/about/" rel="author">{owner}</Link></span>
         <span className="ab-role">SEO consultant, MrSEO.pk. Working on Pakistani search since 2010.</span>
       </div>
     </div>
   );
 }
 
-export function Article({ content, question }: { content?: LongContent; question: string }) {
+export function Article({ content, question, owner }: { content?: LongContent; question: string; owner: string }) {
   if (!content) return null;
   const sections = content.sections ?? [];
   const faqs = content.faqs ?? [];
@@ -66,7 +66,7 @@ export function Article({ content, question }: { content?: LongContent; question
     <div className={'article-layout' + (hasToc ? ' has-toc' : '')}>
       {hasToc && <Toc items={toc} />}
       <div className="mrseo-article">
-        <Byline />
+        <Byline owner={owner} />
         <AnswerBox question={question} answer={content.quick} />
         <Sections sections={sections} />
         <Faqs faqs={faqs} />
