@@ -403,6 +403,8 @@ a.card:hover .card-t { color: var(--green-hi); }
 .ftr-bot-links { display: flex; flex-wrap: wrap; gap: 20px; }
 .ftr-bot-links a { color: var(--t3); }
 .ftr-bot-links a:hover { color: var(--t1); }
+.ftr-credit a { color: var(--t2); font-weight: 600; }
+.ftr-credit a:hover { color: var(--g); }
 
 /* ---------- Breadcrumb ---------- */
 .breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 14px; color: var(--t3); margin-bottom: 24px; }

@@ -68,6 +68,7 @@ export default async function Footer() {
         </div>
         <div className="ftr-bot">
           <span>© {new Date().getFullYear()} MrSEO.pk. Owned and operated by {st.ownerName}. Built in {st.baseCity}, Pakistan.</span>
+          <span className="ftr-credit">Designed and developed by <a href="https://inventiveclicks.com/" target="_blank" rel="noopener">Inventive Clicks</a></span>
           <div className="ftr-bot-links">
             <Link href="/privacy-policy/">Privacy Policy</Link>
             <Link href="/terms/">Terms</Link>
