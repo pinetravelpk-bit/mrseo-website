@@ -8,10 +8,10 @@ import { getPayload } from 'payload';
 import config from '../src/payload.config';
 import { POSTS } from './seed-data/blog/index';
 import { htmlToLexical, paragraphs } from '../src/cms/lexical';
+import { toBlock, type AnyBlock } from './lib/to-block';
 
 type Faq = { q: string; a: string };
 type Long = { quick?: string; sections: { h2: string; html: string }[]; faqs: Faq[] };
-type AnyBlock = Record<string, any> & { type: string };
 
 const json = (f: string) => JSON.parse(readFileSync(path.resolve(process.cwd(), 'scripts/seed-data/generated', f), 'utf8'));
 const cities = json('cities.json'), industries = json('industries.json'), services = json('services.json'), courses = json('courses.json');
@@ -29,26 +29,6 @@ const long = (c?: Long) => ({
   faqs: c?.faqs ?? [],
 });
 
-function toBlock(b: AnyBlock) {
-  switch (b.type) {
-    case 'p': return { blockType: 'paragraph', text: b.text };
-    case 'h2': return { blockType: 'heading2', text: b.text };
-    case 'h3': return { blockType: 'heading3', text: b.text };
-    case 'list': return { blockType: 'list', ordered: !!b.ordered, items: b.items.map(t) };
-    case 'callout': return { blockType: 'callout', tone: b.tone, title: b.title, text: b.text };
-    case 'slides': return { blockType: 'slides', title: b.title, slides: b.slides.map((s: any) => ({ title: s.title, points: s.points.map(t) })) };
-    case 'video': return { blockType: 'video', title: b.title, steps: b.steps };
-    case 'stats': return { blockType: 'stats', title: b.title, items: b.items };
-    case 'bars': return { blockType: 'bars', title: b.title, items: b.items, note: b.note };
-    case 'process': return { blockType: 'process', title: b.title, steps: b.steps };
-    case 'compare': return { blockType: 'compare', title: b.title, leftLabel: b.left.label, rightLabel: b.right.label, leftItems: b.left.items.map(t), rightItems: b.right.items.map(t) };
-    case 'checklist': return { blockType: 'checklist', title: b.title, items: b.items.map(t) };
-    case 'table': return { blockType: 'table', caption: b.caption, head: b.head.map(t), rows: b.rows.map((r: string[]) => ({ cells: r.map(t) })) };
-    case 'quote': return { blockType: 'quote', text: b.text, cite: b.cite };
-    case 'sources': return { blockType: 'sources', items: b.items };
-    default: throw new Error('Unknown block type ' + b.type);
-  }
-}
 
 const INCLUDE_ICONS: Record<string, string> = {
   'Free internship': 'briefcase', 'Free certificate': 'award', 'Portfolio you keep': 'folder', 'Written reference': 'file',
