@@ -641,3 +641,8 @@ a.card:hover .card-t { color: var(--green-hi); }
   .city-card .tag-row { display: none; }
   .city-urdu { font-size: 15px; }
 }
+
+/* Mobile menu button: show the matching icon for the drawer state (set by HeaderEffects). */
+.mob-toggle .ico-close { display: none; }
+.mob-toggle[aria-expanded="true"] .ico-open { display: none; }
+.mob-toggle[aria-expanded="true"] .ico-close { display: inline-block; }

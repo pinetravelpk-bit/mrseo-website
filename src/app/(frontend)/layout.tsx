@@ -11,8 +11,8 @@ import { coursesByTier, SITE_URL } from "@/lib/site";
 import { getSite } from "@/lib/cms";
 
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
-const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], weight: ['600', '700', '800'], variable: '--font-jakarta', display: 'swap' });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'optional' });
+const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], weight: ['600', '700', '800'], variable: '--font-jakarta', display: 'optional' });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -57,8 +57,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       
       <body>
         {/* Google tag (gtag.js) and the Google Ads lead-form conversion event, as in the original theme */}
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-L8M3D1L9PB" strategy="afterInteractive" />
-        <Script id="gtag-init" strategy="afterInteractive">{`
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-L8M3D1L9PB" strategy="lazyOnload" />
+        <Script id="gtag-init" strategy="lazyOnload">{`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());

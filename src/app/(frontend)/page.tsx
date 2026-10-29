@@ -52,7 +52,7 @@ export default async function Home() {
           <aside className="profile-card" aria-label={`About ${s.ownerName}`}>
             <div className="pc-top">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo-mark.png" alt="" width={64} height={64} className="pc-av" />
+              <img src="/logo-mark.webp" alt="" width={64} height={64} className="pc-av" />
               <div>
                 <div className="pc-name">{s.ownerName}</div>
                 <div className="pc-role">{h.cardRole}</div>

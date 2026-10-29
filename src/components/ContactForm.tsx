@@ -1,8 +1,8 @@
 'use client';
 import { useState, type FormEvent } from 'react';
-import { CircleCheck, TriangleAlert } from 'lucide-react';
+import { CircleCheck, Mail, MapPin, TriangleAlert } from 'lucide-react';
 import { waLink } from '@/lib/site';
-import Icon, { WhatsAppIcon } from './Icon';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 export async function submitForm(url: string, form: HTMLFormElement, wa: string) {
   const body = Object.fromEntries(new FormData(form).entries());
@@ -108,7 +108,7 @@ export default function ContactFormView({ info, cities, services }: { info: Cont
         <div className="owner-mini">
           <div className="pc-top">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo-mark.png" alt="" width={54} height={54} className="pc-av" />
+            <img src="/logo-mark.webp" alt="" width={54} height={54} className="pc-av" />
             <div>
               <div className="pc-name">{info.owner}</div>
               <div className="pc-role">SEO consultant and founder</div>
@@ -130,14 +130,14 @@ export default function ContactFormView({ info, cities, services }: { info: Cont
           </div>
         </div>
         <div className="side-card">
-          <span className="ico-badge blue"><Icon name="mail" /></span>
+          <span className="ico-badge blue"><Mail size={22} strokeWidth={1.75} aria-hidden="true" /></span>
           <div>
             <div className="side-t">Email</div>
             <div className="side-v"><a href={`mailto:${info.email}`}>{info.email}</a><small>Usually replies the same day</small></div>
           </div>
         </div>
         <div className="side-card">
-          <span className="ico-badge blue"><Icon name="pin" /></span>
+          <span className="ico-badge blue"><MapPin size={22} strokeWidth={1.75} aria-hidden="true" /></span>
           <div>
             <div className="side-t">Working across Pakistan</div>
             <div className="side-p">{cities.join(', ')}</div>

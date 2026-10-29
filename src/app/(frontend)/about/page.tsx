@@ -41,7 +41,7 @@ export default async function About() {
 
             <div className="about-card">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo-mark.png" alt={s.ownerName} width={112} height={112} className="about-av" />
+              <img src="/logo-mark.webp" alt={s.ownerName} width={112} height={112} className="about-av" />
               <div className="about-av-name">{s.ownerName}</div>
               <div className="about-av-role">{a.cardRole}</div>
               <div className="pc-loc"><MapPin size={15} aria-hidden="true" /> {a.cardLocation}</div>

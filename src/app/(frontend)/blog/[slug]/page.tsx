@@ -82,7 +82,7 @@ export default async function PostPage({ params }: Props) {
           <p className="loc-desc">{post.description}</p>
           <div className="post-byline">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo-mark.png" alt="" width={44} height={44} />
+            <img src="/logo-mark.webp" alt="" width={44} height={44} />
             <div>
               <span className="ab-name">By <Link href="/about/" rel="author">{st.ownerName}</Link></span>
               <span className="post-facts">
@@ -116,7 +116,7 @@ export default async function PostPage({ params }: Props) {
 
               <aside className="author-box">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/logo-mark.png" alt={st.ownerName} width={72} height={72} />
+                <img src="/logo-mark.webp" alt={st.ownerName} width={72} height={72} />
                 <div>
                   <p className="author-name">About the author</p>
                   <p><Inline text={st.authorBio} /></p>

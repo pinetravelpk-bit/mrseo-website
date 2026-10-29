@@ -1,7 +1,8 @@
 'use client';
 import { waLink } from '@/lib/site';
+import { GraduationCap, MapPin, TriangleAlert } from 'lucide-react';
 import { FormMessage, useFormSubmit, type ContactInfo } from './ContactForm';
-import Icon, { WhatsAppIcon } from './Icon';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 /* Course application form. Posts to its own endpoint so applications
    do not arrive looking like SEO enquiries. Pass a course slug to preselect it. */
@@ -85,7 +86,7 @@ export default function EnrollFormView({ info, campus, campusCity, cities, pro, 
 
       <aside className="side-stack">
         <div className="side-card">
-          <span className="ico-badge blue"><Icon name="pin" /></span>
+          <span className="ico-badge blue"><MapPin size={22} strokeWidth={1.75} aria-hidden="true" /></span>
           <div>
             <div className="side-t">Where classes are held</div>
             <div className="side-v">{campus}<small>Easy from Satellite Town, Saddar, Chaklala and most of Islamabad. Online batches open to every city.</small></div>
@@ -99,14 +100,14 @@ export default function EnrollFormView({ info, campus, campusCity, cities, pro, 
           </div>
         </div>
         <div className="side-card">
-          <span className="ico-badge"><Icon name="grad" /></span>
+          <span className="ico-badge"><GraduationCap size={22} strokeWidth={1.75} aria-hidden="true" /></span>
           <div>
             <div className="side-t">What every course includes</div>
             <div className="side-p">Free certificate of completion. Session recordings you keep. Small batches, 15 to 20 seats. Professional courses only: free internship on live accounts and a written reference.</div>
           </div>
         </div>
         <div className="side-card">
-          <span className="ico-badge blue"><Icon name="alert" /></span>
+          <span className="ico-badge blue"><TriangleAlert size={22} strokeWidth={1.75} aria-hidden="true" /></span>
           <div>
             <div className="side-t">What we do not claim</div>
             <div className="side-p">The certificate is issued by MrSEO.pk. It is not HEC or NAVTTC accredited, the internship is unpaid, and short courses do not include it. We would rather say that now than have you find out later.</div>

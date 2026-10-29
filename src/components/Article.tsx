@@ -46,7 +46,7 @@ export function Byline({ owner }: { owner: string }) {
   return (
     <div className="art-byline">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/logo-mark.png" alt="" width={46} height={46} />
+      <img src="/logo-mark.webp" alt="" width={46} height={46} />
       <div>
         <span className="ab-name">Written by <Link href="/about/" rel="author">{owner}</Link></span>
         <span className="ab-role">SEO consultant, MrSEO.pk. Working on Pakistani search since 2010.</span>
