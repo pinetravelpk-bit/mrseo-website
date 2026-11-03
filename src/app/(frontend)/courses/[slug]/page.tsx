@@ -6,6 +6,7 @@ import { IncludeGrid, PageHero, SectionHead } from '@/components/Cards';
 import { Article } from '@/components/Article';
 import { EnrollForm } from '@/components/Forms';
 import Icon, { WhatsAppIcon } from '@/components/Icon';
+import JoinOnlineButton from '@/components/JoinOnlineButton';
 import { courseUrl, entries, numWord, waLink } from '@/lib/site';
 import { getGlobal, getSite } from '@/lib/cms';
 import { pageMeta } from '@/lib/meta';
@@ -69,6 +70,7 @@ export default async function CoursePage({ params }: Props) {
           : `A free internship on live client accounts and a certificate of completion are included, delivered by ${st.ownerName} rather than a hired trainer.`}`}
         actions={<>
           <a href="#enroll" className="btn btn-g">Apply for the next batch <ArrowRight size={18} /></a>
+          <JoinOnlineButton course={slug} />
           <a href={waLink(st.whatsapp, `Hi, I want details about the ${cn} course.`)} className="btn btn-o" target="_blank" rel="noopener"><WhatsAppIcon /> Ask on WhatsApp</a>
         </>}
         facts={[
