@@ -36,6 +36,7 @@ export const OnlineClasses: CollectionConfig = {
     ],
   },
   fields: [
+    { name: 'classActions', type: 'ui', admin: { components: { Field: '/cms/components/ClassActions#ClassActions' } } },
     { name: 'title', type: 'text', required: true, admin: { description: 'e.g. SEO Course, Batch 12, Class 5: Keyword research' } },
     {
       type: 'row',
