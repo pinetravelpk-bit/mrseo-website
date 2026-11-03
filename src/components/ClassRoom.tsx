@@ -34,7 +34,7 @@ export default function ClassRoom({ pass, title, teacher = false, onLeave }: { p
   useEffect(() => {
     let gone = false;
     document.body.style.overflow = 'hidden';
-    loadScript(`https://${pass.domain}/external_api.js`)
+    loadScript(`https://${pass.domain}/libs/external_api.min.js`)
       .then(() => {
         if (gone || !box.current || !window.JitsiMeetExternalAPI) return;
         const a = new window.JitsiMeetExternalAPI(pass.domain, {
