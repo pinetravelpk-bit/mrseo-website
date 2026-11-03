@@ -67,6 +67,9 @@ export interface Config {
   };
   blocks: {};
   collections: {
+    queries: Query;
+    'online-classes': OnlineClass;
+    'class-attendance': ClassAttendance;
     posts: Post;
     pages: Page;
     'case-studies': CaseStudy;
@@ -76,7 +79,6 @@ export interface Config {
     cities: City;
     industries: Industry;
     testimonials: Testimonial;
-    queries: Query;
     users: User;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
@@ -85,6 +87,9 @@ export interface Config {
   };
   collectionsJoins: {};
   collectionsSelect: {
+    queries: QueriesSelect<false> | QueriesSelect<true>;
+    'online-classes': OnlineClassesSelect<false> | OnlineClassesSelect<true>;
+    'class-attendance': ClassAttendanceSelect<false> | ClassAttendanceSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
     'case-studies': CaseStudiesSelect<false> | CaseStudiesSelect<true>;
@@ -94,7 +99,6 @@ export interface Config {
     cities: CitiesSelect<false> | CitiesSelect<true>;
     industries: IndustriesSelect<false> | IndustriesSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
-    queries: QueriesSelect<false> | QueriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -148,6 +152,255 @@ export interface UserAuthOperations {
     email: string;
     password: string;
   };
+}
+/**
+ * Everything sent through the website forms. Mark each one as you deal with it.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "queries".
+ */
+export interface Query {
+  id: number;
+  kind: 'contact' | 'enroll';
+  status: 'new' | 'contacted' | 'won' | 'closed' | 'spam';
+  name: string;
+  email?: string | null;
+  phone?: string | null;
+  city?: string | null;
+  service?: string | null;
+  website?: string | null;
+  course?: string | null;
+  mode?: string | null;
+  education?: string | null;
+  message?: string | null;
+  /**
+   * Only visible in the admin.
+   */
+  notes?: string | null;
+  page?: string | null;
+  ip?: string | null;
+  emailed?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Create a class, then send students the Student join link and access code on WhatsApp. To teach, open the Teacher link a few minutes early while logged in to this admin. Students wait in the classroom until you join.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "online-classes".
+ */
+export interface OnlineClass {
+  id: number;
+  /**
+   * e.g. SEO Course, Batch 12, Class 5: Keyword research
+   */
+  title: string;
+  course?: (number | null) | Course;
+  startsAt: string;
+  durationMins?: number | null;
+  /**
+   * Leave empty to generate a 6-digit code.
+   */
+  accessCode?: string | null;
+  status?: ('scheduled' | 'cancelled' | 'finished') | null;
+  /**
+   * Shown on the join page, e.g. what to prepare or bring.
+   */
+  notes?: string | null;
+  /**
+   * Generated when you save.
+   */
+  studentLink?: string | null;
+  teacherLink?: string | null;
+  slug?: string | null;
+  room?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "courses".
+ */
+export interface Course {
+  id: number;
+  name: string;
+  tier: 'pro' | 'short';
+  sub?: string | null;
+  short?: string | null;
+  desc: string;
+  /**
+   * e.g. 16 weeks
+   */
+  duration: string;
+  /**
+   * e.g. 96 hours
+   */
+  hours?: string | null;
+  level?: string | null;
+  /**
+   * Number only, e.g. 15,000
+   */
+  fee: string;
+  /**
+   * e.g. One-time fee
+   */
+  fee_note?: string | null;
+  seats?: string | null;
+  mode?: string | null;
+  /**
+   * e.g. 8 weeks. Leave empty for none.
+   */
+  intern?: string | null;
+  schedule?: string | null;
+  outcomes?:
+    | {
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  tools?:
+    | {
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Leave empty to use the default icon for this item.
+   */
+  icon?:
+    | (
+        | 'svc:seo'
+        | 'svc:ppc'
+        | 'svc:social-media'
+        | 'svc:web-design'
+        | 'svc:local-seo'
+        | 'svc:content'
+        | 'course:digital-marketing'
+        | 'course:seo'
+        | 'course:social-media-marketing'
+        | 'course:ai-marketing'
+        | 'course:graphic-design'
+        | 'course:content-writing'
+        | 'course:canva-design'
+        | 'course:ai-basics'
+        | 'course:wordpress'
+        | 'course:video-editing'
+        | 'course:freelancing'
+        | 'course:meta-ads-basics'
+        | 'ind:travel-tourism'
+        | 'ind:ecommerce'
+        | 'ind:cosmetics'
+        | 'ind:medical'
+        | 'ind:schools'
+        | 'ind:hotels'
+        | 'ind:clinics'
+        | 'ind:real-estate'
+        | 'city:karachi'
+        | 'city:lahore'
+        | 'city:islamabad'
+        | 'city:rawalpindi'
+        | 'city:peshawar'
+        | 'city:quetta'
+        | 'city:faisalabad'
+        | 'city:multan'
+        | 'briefcase'
+        | 'award'
+        | 'folder'
+        | 'file'
+        | 'video'
+        | 'users'
+        | 'wallet'
+        | 'clock'
+        | 'hammer'
+        | 'upgrade'
+        | 'trophy'
+        | 'local'
+        | 'chart'
+        | 'map'
+        | 'layers'
+        | 'unlock'
+        | 'link'
+        | 'coins'
+        | 'search'
+        | 'pin'
+        | 'pen'
+        | 'chat'
+        | 'mail'
+        | 'alert'
+        | 'grad'
+      )
+    | null;
+  /**
+   * One paragraph shown in the "In short" box near the top. Written as a direct answer for Google and AI assistants.
+   */
+  quick?: string | null;
+  /**
+   * Each section gets an H2 heading and appears in the table of contents.
+   */
+  sections?:
+    | {
+        heading: string;
+        content?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Shown as an FAQ list and added to the page as FAQ structured data.
+   */
+  faqs?:
+    | {
+        q: string;
+        a: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Leave empty to use the automatic title. About 50 to 60 characters.
+   */
+  metaTitle?: string | null;
+  /**
+   * Leave empty to use the automatic description. About 150 to 160 characters.
+   */
+  metaDescription?: string | null;
+  /**
+   * Used in the page address. Lowercase letters, numbers and hyphens only. Changing it changes the URL.
+   */
+  slug: string;
+  /**
+   * Lower numbers appear first in menus and grids.
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Everyone who joined a class through the website, with the time they joined.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "class-attendance".
+ */
+export interface ClassAttendance {
+  id: number;
+  onlineClass: number | OnlineClass;
+  name: string;
+  phone?: string | null;
+  ip?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * Posts go live automatically at their publish time. Set a future time to schedule a post.
@@ -811,176 +1064,6 @@ export interface Service {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "courses".
- */
-export interface Course {
-  id: number;
-  name: string;
-  tier: 'pro' | 'short';
-  sub?: string | null;
-  short?: string | null;
-  desc: string;
-  /**
-   * e.g. 16 weeks
-   */
-  duration: string;
-  /**
-   * e.g. 96 hours
-   */
-  hours?: string | null;
-  level?: string | null;
-  /**
-   * Number only, e.g. 15,000
-   */
-  fee: string;
-  /**
-   * e.g. One-time fee
-   */
-  fee_note?: string | null;
-  seats?: string | null;
-  mode?: string | null;
-  /**
-   * e.g. 8 weeks. Leave empty for none.
-   */
-  intern?: string | null;
-  schedule?: string | null;
-  outcomes?:
-    | {
-        text?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  tools?:
-    | {
-        text?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Leave empty to use the default icon for this item.
-   */
-  icon?:
-    | (
-        | 'svc:seo'
-        | 'svc:ppc'
-        | 'svc:social-media'
-        | 'svc:web-design'
-        | 'svc:local-seo'
-        | 'svc:content'
-        | 'course:digital-marketing'
-        | 'course:seo'
-        | 'course:social-media-marketing'
-        | 'course:ai-marketing'
-        | 'course:graphic-design'
-        | 'course:content-writing'
-        | 'course:canva-design'
-        | 'course:ai-basics'
-        | 'course:wordpress'
-        | 'course:video-editing'
-        | 'course:freelancing'
-        | 'course:meta-ads-basics'
-        | 'ind:travel-tourism'
-        | 'ind:ecommerce'
-        | 'ind:cosmetics'
-        | 'ind:medical'
-        | 'ind:schools'
-        | 'ind:hotels'
-        | 'ind:clinics'
-        | 'ind:real-estate'
-        | 'city:karachi'
-        | 'city:lahore'
-        | 'city:islamabad'
-        | 'city:rawalpindi'
-        | 'city:peshawar'
-        | 'city:quetta'
-        | 'city:faisalabad'
-        | 'city:multan'
-        | 'briefcase'
-        | 'award'
-        | 'folder'
-        | 'file'
-        | 'video'
-        | 'users'
-        | 'wallet'
-        | 'clock'
-        | 'hammer'
-        | 'upgrade'
-        | 'trophy'
-        | 'local'
-        | 'chart'
-        | 'map'
-        | 'layers'
-        | 'unlock'
-        | 'link'
-        | 'coins'
-        | 'search'
-        | 'pin'
-        | 'pen'
-        | 'chat'
-        | 'mail'
-        | 'alert'
-        | 'grad'
-      )
-    | null;
-  /**
-   * One paragraph shown in the "In short" box near the top. Written as a direct answer for Google and AI assistants.
-   */
-  quick?: string | null;
-  /**
-   * Each section gets an H2 heading and appears in the table of contents.
-   */
-  sections?:
-    | {
-        heading: string;
-        content?: {
-          root: {
-            type: string;
-            children: {
-              type: any;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        } | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Shown as an FAQ list and added to the page as FAQ structured data.
-   */
-  faqs?:
-    | {
-        q: string;
-        a: string;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Leave empty to use the automatic title. About 50 to 60 characters.
-   */
-  metaTitle?: string | null;
-  /**
-   * Leave empty to use the automatic description. About 150 to 160 characters.
-   */
-  metaDescription?: string | null;
-  /**
-   * Used in the page address. Lowercase letters, numbers and hyphens only. Changing it changes the URL.
-   */
-  slug: string;
-  /**
-   * Lower numbers appear first in menus and grids.
-   */
-  order?: number | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "cities".
  */
 export interface City {
@@ -1290,36 +1373,6 @@ export interface Testimonial {
   createdAt: string;
 }
 /**
- * Everything sent through the website forms. Mark each one as you deal with it.
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "queries".
- */
-export interface Query {
-  id: number;
-  kind: 'contact' | 'enroll';
-  status: 'new' | 'contacted' | 'won' | 'closed' | 'spam';
-  name: string;
-  email?: string | null;
-  phone?: string | null;
-  city?: string | null;
-  service?: string | null;
-  website?: string | null;
-  course?: string | null;
-  mode?: string | null;
-  education?: string | null;
-  message?: string | null;
-  /**
-   * Only visible in the admin.
-   */
-  notes?: string | null;
-  page?: string | null;
-  ip?: string | null;
-  emailed?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
@@ -1371,6 +1424,18 @@ export interface PayloadLockedDocument {
   id: number;
   document?:
     | ({
+        relationTo: 'queries';
+        value: number | Query;
+      } | null)
+    | ({
+        relationTo: 'online-classes';
+        value: number | OnlineClass;
+      } | null)
+    | ({
+        relationTo: 'class-attendance';
+        value: number | ClassAttendance;
+      } | null)
+    | ({
         relationTo: 'posts';
         value: number | Post;
       } | null)
@@ -1405,10 +1470,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'testimonials';
         value: number | Testimonial;
-      } | null)
-    | ({
-        relationTo: 'queries';
-        value: number | Query;
       } | null)
     | ({
         relationTo: 'users';
@@ -1455,6 +1516,61 @@ export interface PayloadMigration {
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "queries_select".
+ */
+export interface QueriesSelect<T extends boolean = true> {
+  kind?: T;
+  status?: T;
+  name?: T;
+  email?: T;
+  phone?: T;
+  city?: T;
+  service?: T;
+  website?: T;
+  course?: T;
+  mode?: T;
+  education?: T;
+  message?: T;
+  notes?: T;
+  page?: T;
+  ip?: T;
+  emailed?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "online-classes_select".
+ */
+export interface OnlineClassesSelect<T extends boolean = true> {
+  title?: T;
+  course?: T;
+  startsAt?: T;
+  durationMins?: T;
+  accessCode?: T;
+  status?: T;
+  notes?: T;
+  studentLink?: T;
+  teacherLink?: T;
+  slug?: T;
+  room?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "class-attendance_select".
+ */
+export interface ClassAttendanceSelect<T extends boolean = true> {
+  onlineClass?: T;
+  name?: T;
+  phone?: T;
+  ip?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1986,30 +2102,6 @@ export interface TestimonialsSelect<T extends boolean = true> {
   city?: T;
   text?: T;
   order?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "queries_select".
- */
-export interface QueriesSelect<T extends boolean = true> {
-  kind?: T;
-  status?: T;
-  name?: T;
-  email?: T;
-  phone?: T;
-  city?: T;
-  service?: T;
-  website?: T;
-  course?: T;
-  mode?: T;
-  education?: T;
-  message?: T;
-  notes?: T;
-  page?: T;
-  ip?: T;
-  emailed?: T;
   updatedAt?: T;
   createdAt?: T;
 }

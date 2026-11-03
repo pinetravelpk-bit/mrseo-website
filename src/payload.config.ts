@@ -9,6 +9,7 @@ import { Media, Queries, Users } from './cms/collections/system';
 import { Cities, Courses, Industries, Services, Testimonials } from './cms/collections/business';
 import { CaseStudies, Pages, Posts } from './cms/collections/content';
 import { GLOBALS } from './cms/globals';
+import { ClassAttendance, OnlineClasses } from './cms/collections/classes';
 import { migrations } from './migrations';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -24,7 +25,7 @@ export default buildConfig({
     meta: { titleSuffix: ' · MrSEO.pk admin' },
     dateFormat: 'd MMM yyyy, h:mm a',
   },
-  collections: [Queries, Posts, Pages, CaseStudies, Media, Services, Courses, Cities, Industries, Testimonials, Users],
+  collections: [Queries, OnlineClasses, ClassAttendance, Posts, Pages, CaseStudies, Media, Services, Courses, Cities, Industries, Testimonials, Users],
   globals: GLOBALS,
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || 'local-development-secret-change-me',

@@ -1,0 +1,19 @@
+// MrSEO Classroom branding: appended to the server's interface_config.js.
+interfaceConfig.APP_NAME = 'MrSEO Classroom';
+interfaceConfig.NATIVE_APP_NAME = 'MrSEO Classroom';
+interfaceConfig.PROVIDER_NAME = 'MrSEO.pk';
+interfaceConfig.SHOW_JITSI_WATERMARK = false;
+interfaceConfig.SHOW_WATERMARK_FOR_GUESTS = false;
+interfaceConfig.SHOW_BRAND_WATERMARK = false;
+interfaceConfig.SHOW_POWERED_BY = false;
+interfaceConfig.JITSI_WATERMARK_LINK = 'https://mrseo.pk';
+interfaceConfig.BRAND_WATERMARK_LINK = 'https://mrseo.pk';
+interfaceConfig.DEFAULT_LOGO_URL = 'images/mrseo-logo.png';
+interfaceConfig.DEFAULT_WELCOME_PAGE_LOGO_URL = 'images/mrseo-logo.png';
+interfaceConfig.MOBILE_APP_PROMO = false;
+interfaceConfig.HIDE_DEEP_LINKING_LOGO = true;
+interfaceConfig.DISPLAY_WELCOME_FOOTER = false;
+interfaceConfig.SHOW_CHROME_EXTENSION_BANNER = false;
+interfaceConfig.DEFAULT_BACKGROUND = '#070d18';
+interfaceConfig.DEFAULT_REMOTE_DISPLAY_NAME = 'Student';
+interfaceConfig.SUPPORT_URL = 'https://mrseo.pk/contact/';

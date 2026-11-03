@@ -646,3 +646,20 @@ a.card:hover .card-t { color: var(--green-hi); }
 .mob-toggle .ico-close { display: none; }
 .mob-toggle[aria-expanded="true"] .ico-open { display: none; }
 .mob-toggle[aria-expanded="true"] .ico-close { display: inline-block; }
+
+/* MrSEO Classroom (live class, full screen inside the site) */
+.classroom { position: fixed; inset: 0; z-index: 100000; display: flex; flex-direction: column; background: #050a13; }
+.classroom-bar { display: flex; align-items: center; gap: 12px; padding: 8px 16px; min-height: 52px; background: var(--bg-alt); border-bottom: 1px solid var(--line-2); }
+.classroom-bar img { border-radius: 8px; flex: none; }
+.classroom-title { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; }
+.classroom-title strong { font-family: var(--font-head); font-size: 15px; color: var(--t1); }
+.classroom-title span { font-size: 13px; color: var(--t3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.classroom-leave { margin-left: auto; flex: none; padding: 8px 14px; border-radius: 10px; border: 1px solid rgba(239, 90, 90, .45); background: rgba(239, 90, 90, .12); color: #ffb3b3; font: 600 14px var(--font-body); cursor: pointer; }
+.classroom-leave:hover { background: rgba(239, 90, 90, .22); }
+.classroom-stage { flex: 1; min-height: 0; display: flex; }
+.classroom-frame { flex: 1; }
+.classroom-frame iframe { display: block; border: 0; }
+.classroom-msg { margin: auto; max-width: 460px; padding: 24px 16px; text-align: center; }
+.classroom-msg h2 { font-size: 24px; margin-bottom: 10px; }
+.classroom-msg p { color: var(--t2); }
+.classroom-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
