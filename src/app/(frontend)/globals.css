@@ -708,7 +708,7 @@ a.card:hover .card-t { color: var(--green-hi); }
 .lc-note { font-size: 13.5px; color: var(--t3); margin: 6px 0 0; }
 .lc-note b { color: var(--t1); }
 .lc-empty { text-align: center; padding: 22px 8px 8px; color: var(--t2); }
-.lc-empty svg { color: var(--green); }
+.lc-empty > svg { color: var(--green); display: block; margin: 0 auto; }
 .lc-empty h3 { font-size: 19px; margin: 10px 0 6px; color: var(--t1); }
 .lc-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
 .lc-loading { display: grid; gap: 12px; }
