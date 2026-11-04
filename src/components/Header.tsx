@@ -3,6 +3,7 @@ import { ArrowRight, ChevronDown, Menu, X } from 'lucide-react';
 import { courseUrl, cityUrl, industryUrl, serviceUrl, waLink } from '@/lib/site';
 import Icon, { WhatsAppIcon } from './Icon';
 import HeaderEffects from './HeaderEffects';
+import LiveClassMenu, { LiveClassLink } from './LiveClassMenu';
 
 type Item = { slug: string; name: string; sub: string; icon: string };
 /** Menu data, loaded from the admin by the layout. */
@@ -129,7 +130,8 @@ export default function Header({ nav }: { nav: NavData }) {
 
           <div className="hdr-acts">
             <a href={wa(WA_TEXT)} className="icon-btn hide-md" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><WhatsAppIcon /></a>
-            <Link href="/contact/" className="btn btn-g btn-sm">Free audit</Link>
+            <LiveClassMenu wa={nav.wa} />
+            <Link href="/contact/" className="btn btn-g btn-sm hdr-audit">Free audit</Link>
             <button type="button" className="icon-btn mob-toggle" aria-controls="mob-drawer" aria-expanded="false" aria-label="Open menu">
               <Menu size={22} className="ico-open" /><X size={22} className="ico-close" />
             </button>
@@ -139,6 +141,7 @@ export default function Header({ nav }: { nav: NavData }) {
 
       {/* Mobile drawer: grouped so the 40+ links stay scannable */}
       <nav id="mob-drawer" className="mob-drawer" aria-label="Mobile" aria-hidden="true">
+        <LiveClassLink className="mob-plain mob-live"><span className="lc-dot" aria-hidden="true" /> Join Live Class</LiveClassLink>
         <details className="mob-group">
           <summary>Services {chevron}</summary>
           <div className="mob-links">
