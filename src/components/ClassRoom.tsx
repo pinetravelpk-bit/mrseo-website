@@ -53,7 +53,8 @@ export default function ClassRoom({ pass, title, teacher = false, onLeave }: { p
             readOnlyName: true,
             startWithAudioMuted: !teacher,
             startWithVideoMuted: true,
-            disableSelfView: true,
+            // The teacher sees a preview of their own screen share; students keep a clean view.
+            disableSelfView: !teacher,
             disableDeepLinking: true,
             disableInviteFunctions: true,
             enableClosePage: false,

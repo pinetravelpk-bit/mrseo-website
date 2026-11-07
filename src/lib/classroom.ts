@@ -51,3 +51,12 @@ export function noteFailedAttempt(ip: string) {
   else a.n += 1;
   if (attempts.size > 5000) for (const [k, v] of attempts) if (v.until < now) attempts.delete(k);
 }
+
+/** Every class runs at least 2 hours, whatever duration is set in admin. */
+export const MIN_CLASS_MINUTES = 120;
+export function classWindow(startsAt: string, durationMins?: number | null) {
+  const start = new Date(startsAt).getTime();
+  const mins = Math.max(durationMins || 0, MIN_CLASS_MINUTES);
+  const end = start + mins * 60_000;
+  return { start, mins, end, opens: start - 30 * 60_000, closes: end + 60 * 60_000 };
+}

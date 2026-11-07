@@ -48,7 +48,7 @@ export const OnlineClasses: CollectionConfig = {
     {
       type: 'row',
       fields: [
-        { name: 'durationMins', type: 'number', label: 'Duration (minutes)', defaultValue: 120, admin: { width: '33%' } },
+        { name: 'durationMins', type: 'number', label: 'Duration (minutes)', defaultValue: 120, admin: { width: '33%', description: 'Every class stays open at least 2 hours.' } },
         { name: 'accessCode', type: 'text', label: 'Access code', admin: { width: '33%', description: 'Leave empty to generate a 6-digit code.' } },
         {
           name: 'status', type: 'select', defaultValue: 'scheduled', admin: { width: '33%' },

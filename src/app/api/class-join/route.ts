@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { cms } from '@/lib/cms';
 import { clean, clientIp } from '@/lib/mail';
-import { CLASSROOM_DOMAIN, classToken, classroomReady, noteFailedAttempt, tooManyAttempts } from '@/lib/classroom';
+import { CLASSROOM_DOMAIN, classToken, classroomReady, classWindow, noteFailedAttempt, tooManyAttempts } from '@/lib/classroom';
 
 /* Checks a student's access code, records attendance and returns a classroom pass. */
 
@@ -29,11 +29,9 @@ export async function POST(req: Request) {
     return fail('That access code is not correct. Please check the message you received.');
   }
 
-  const start = new Date(c.startsAt as string).getTime();
-  const mins = (c.durationMins as number) || 120;
-  const closes = start + (mins + 60) * 60_000;
+  const { opens, closes } = classWindow(c.startsAt as string, c.durationMins as number);
   const now = Date.now();
-  if (now < start - 30 * 60_000) return fail('Joining opens 30 minutes before the class starts.');
+  if (now < opens) return fail('Joining opens 30 minutes before the class starts.');
   if (now > closes) return fail('This class has ended.');
 
   let attendanceId: string | undefined;

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { cms } from '@/lib/cms';
+import { classWindow } from '@/lib/classroom';
 
 /* Next scheduled online class for a course, for the "Join course online" button. */
 
@@ -25,7 +26,7 @@ export async function GET(req: Request) {
     overrideAccess: true,
   });
   const now = Date.now();
-  const next = res.docs.find((c) => new Date(c.startsAt as string).getTime() + ((c.durationMins as number) || 120) * 60_000 > now);
+  const next = res.docs.find((c) => classWindow(c.startsAt as string, c.durationMins as number).end > now);
   if (!next) return none;
 
   const start = new Date(next.startsAt as string).getTime();

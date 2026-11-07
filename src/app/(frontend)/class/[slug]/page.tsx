@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { CalendarDays, Clock, Video } from 'lucide-react';
 import ClassJoin from '@/components/ClassJoin';
 import { cms } from '@/lib/cms';
+import { classWindow } from '@/lib/classroom';
 
 /* Private join page for one online class. Not indexed; the link is sent to students. */
 
@@ -22,7 +23,7 @@ export default async function ClassPage({ params }: Props) {
 
   const startsAt = c.startsAt as string;
   const course = c.course && typeof c.course === 'object' ? (c.course as { name?: string }).name : undefined;
-  const mins = (c.durationMins as number) || 120;
+  const { mins } = classWindow(c.startsAt as string, c.durationMins as number);
 
   return (
     <main id="main-content">

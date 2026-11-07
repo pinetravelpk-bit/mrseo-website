@@ -3,7 +3,7 @@ import { headers } from 'next/headers';
 import { notFound, redirect } from 'next/navigation';
 import ClassRoom from '@/components/ClassRoom';
 import { cms } from '@/lib/cms';
-import { CLASSROOM_DOMAIN, classToken, classroomReady } from '@/lib/classroom';
+import { CLASSROOM_DOMAIN, classToken, classroomReady, classWindow } from '@/lib/classroom';
 
 /* Teacher entry: only admin users get in, and they join as the class host. */
 
@@ -32,8 +32,8 @@ export default async function HostPage({ params }: Props) {
   }
 
   const u = user as { id: string | number; name?: string; email?: string };
-  const end = new Date(c.startsAt as string).getTime() + (((c.durationMins as number) || 120) + 60) * 60_000;
-  const expiresAt = Math.max(end, Date.now() + 4 * 60 * 60_000);
+  const { closes } = classWindow(c.startsAt as string, c.durationMins as number);
+  const expiresAt = Math.max(closes, Date.now() + 4 * 60 * 60_000);
   const name = u.name?.trim() || 'Teacher';
   const token = classToken({ name, id: `teacher-${u.id}`, email: u.email, teacher: true, room: String(c.room), expiresAt });
 

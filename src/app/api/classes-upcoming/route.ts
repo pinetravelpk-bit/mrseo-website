@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { cms } from '@/lib/cms';
+import { classWindow } from '@/lib/classroom';
 
 /* Upcoming online classes for the "Join Live Class" window in the menu. */
 
@@ -25,8 +26,7 @@ export async function GET() {
 
   const classes = res.docs
     .map((c) => {
-      const start = new Date(c.startsAt as string).getTime();
-      const mins = (c.durationMins as number) || 120;
+      const { mins, end, opens } = classWindow(c.startsAt as string, c.durationMins as number);
       const course = c.course && typeof c.course === 'object' ? (c.course as { name?: string; slug?: string }) : null;
       return {
         title: c.title as string,
@@ -35,8 +35,8 @@ export async function GET() {
         startsAt: c.startsAt as string,
         durationMins: mins,
         url: `/class/${c.slug}/`,
-        end: start + mins * 60_000,
-        opens: start - 30 * 60_000,
+        end,
+        opens,
       };
     })
     .filter((c) => c.end > now && !/^test\b/i.test(c.title))
