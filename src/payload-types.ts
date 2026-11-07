@@ -208,6 +208,10 @@ export interface OnlineClass {
    */
   notes?: string | null;
   /**
+   * After the class: upload the recording to YouTube as "Unlisted" (or Google Drive, "Anyone with the link") and paste the link here. Students watch it on the class page with the same access code.
+   */
+  recordingUrl?: string | null;
+  /**
    * Generated when you save.
    */
   studentLink?: string | null;
@@ -1553,6 +1557,7 @@ export interface OnlineClassesSelect<T extends boolean = true> {
   accessCode?: T;
   status?: T;
   notes?: T;
+  recordingUrl?: T;
   studentLink?: T;
   teacherLink?: T;
   slug?: T;

@@ -30,6 +30,7 @@ export default function ClassRoom({ pass, title, teacher = false, onLeave }: { p
   const box = useRef<HTMLDivElement>(null);
   const api = useRef<JitsiApi | null>(null);
   const [state, setState] = useState<'loading' | 'live' | 'ended' | 'error'>('loading');
+  const [recHelp, setRecHelp] = useState(false);
 
   useEffect(() => {
     let gone = false;
@@ -94,10 +95,28 @@ export default function ClassRoom({ pass, title, teacher = false, onLeave }: { p
           <strong>MrSEO Classroom</strong>
           <span>{title}{teacher ? ' · You are the teacher' : ''}</span>
         </div>
+        {teacher && state === 'live' ? (
+          <button type="button" className="classroom-help" onClick={() => setRecHelp((v) => !v)} aria-expanded={recHelp}>
+            <span className="lc-dot" aria-hidden="true" /> How to record
+          </button>
+        ) : null}
         {state === 'live' || state === 'loading' ? (
           <button type="button" className="classroom-leave" onClick={leave}>Leave class</button>
         ) : null}
       </div>
+      {teacher && recHelp ? (
+        <div className="classroom-tip" role="note">
+          <strong>Record this class (saved to your computer)</strong>
+          <ol>
+            <li>Use Chrome or Edge on a laptop. In the classroom toolbar, click <b>Record</b> (or <b>⋯ More</b> → <b>Start recording</b>).</li>
+            <li>Click <b>Start recording</b>. When Chrome asks what to share, pick <b>this tab</b> and keep <b>Also share tab audio</b> on.</li>
+            <li>Teach as normal. Your voice, the students and your shared screen are recorded.</li>
+            <li>At the end click <b>Stop recording</b>. The video file downloads to your computer.</li>
+            <li>Upload it to YouTube as <b>Unlisted</b>, then paste the link in admin → this class → <b>Recording link</b>. Students watch it with their access code.</li>
+          </ol>
+          <button type="button" className="btn btn-o btn-sm" onClick={() => setRecHelp(false)}>Got it</button>
+        </div>
+      ) : null}
       <div className="classroom-stage">
         {state === 'ended' || state === 'error' ? (
           <div className="classroom-msg">

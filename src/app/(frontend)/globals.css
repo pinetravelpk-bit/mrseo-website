@@ -731,3 +731,30 @@ a.card:hover .card-t { color: var(--green-hi); }
   .lc-tips { grid-template-columns: 1fr; padding: 12px 18px 18px; }
 }
 @media (prefers-reduced-motion: reduce) { .lc-dot, .lc-waves path, .lc-dialog[open], .lc-skel { animation: none; } }
+
+/* Recorded sessions */
+.lc-recs { padding: 4px 28px 18px; }
+.lc-recs h3 { display: flex; align-items: center; gap: 8px; font-size: 16px; margin: 0 0 4px; }
+.lc-recs h3 svg { color: var(--green); }
+.lc-recs > p { font-size: 13.5px; color: var(--t3); margin: 0 0 10px; }
+.lc-recs ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.lc-recs a { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 12px; background: var(--bg-alt); border: 1px solid var(--line); color: var(--t1); }
+.lc-recs a:hover { border-color: rgba(61, 196, 61, .45); }
+.lc-rec-play { width: 38px; height: 38px; flex: none; display: grid; place-items: center; border-radius: 10px; background: var(--green-soft); color: var(--green-hi); }
+.lc-rec-text { display: flex; flex-direction: column; min-width: 0; }
+.lc-rec-text strong { font-size: 14.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lc-rec-text small { font-size: 12.5px; color: var(--t3); }
+.lc-rec-go { margin-left: auto; font-size: 13px; font-weight: 600; color: var(--green-hi); }
+.rec-box { display: grid; gap: 14px; }
+.rec-head { display: flex; align-items: center; gap: 8px; font-size: 17px; }
+.rec-head svg { color: var(--green); }
+.rec-player { position: relative; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: #000; border: 1px solid var(--line-2); }
+.rec-player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+@media (max-width: 760px) { .lc-recs { padding: 4px 16px 14px; } }
+.classroom-help { margin-left: auto; flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line-2); background: rgba(255, 255, 255, .04); color: var(--t1); font: 600 14px var(--font-body); cursor: pointer; }
+.classroom-help + .classroom-leave { margin-left: 8px; }
+.classroom-tip { position: absolute; top: 60px; right: 16px; z-index: 2; width: min(440px, calc(100vw - 32px)); padding: 16px 18px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line-2); box-shadow: 0 20px 50px rgba(0, 0, 0, .5); font-size: 14px; color: var(--t2); }
+.classroom-tip strong { color: var(--t1); font-size: 15px; }
+.classroom-tip ol { margin: 10px 0 12px; padding-left: 20px; display: grid; gap: 6px; }
+.classroom-tip b { color: var(--t1); }
+@media (max-width: 760px) { .classroom-help { display: none; } }

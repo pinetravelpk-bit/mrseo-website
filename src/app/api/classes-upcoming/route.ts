@@ -43,5 +43,23 @@ export async function GET() {
     .slice(0, 6)
     .map(({ end, opens, ...c }) => ({ ...c, live: now >= opens && now < end }));
 
-  return NextResponse.json({ classes, now }, { headers: { 'Cache-Control': 'no-store' } });
+  // Recent recorded sessions (students open them on the class page with their access code).
+  const past = await payload.find({
+    collection: 'online-classes',
+    where: { and: [{ recordingUrl: { exists: true } }, { recordingUrl: { not_equals: '' } }, { startsAt: { less_than: new Date(now).toISOString() } }] },
+    sort: '-startsAt',
+    limit: 6,
+    depth: 1,
+    overrideAccess: true,
+  });
+  const recordings = past.docs
+    .filter((c) => !/^test\b/i.test(String(c.title)))
+    .map((c) => ({
+      title: c.title as string,
+      course: c.course && typeof c.course === 'object' ? (c.course as { name?: string }).name ?? null : null,
+      startsAt: c.startsAt as string,
+      url: `/class/${c.slug}/`,
+    }));
+
+  return NextResponse.json({ classes, recordings, now }, { headers: { 'Cache-Control': 'no-store' } });
 }

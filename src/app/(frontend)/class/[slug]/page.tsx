@@ -33,13 +33,13 @@ export default async function ClassPage({ params }: Props) {
             <h1 className="cf-title" style={{ fontSize: 'clamp(26px, 3.4vw, 36px)' }}>{c.title as string}</h1>
             <p className="post-facts" style={{ display: 'flex', gap: 18, flexWrap: 'wrap', margin: '10px 0 18px' }}>
               <span><CalendarDays size={15} aria-hidden="true" /> {fmt(startsAt, { weekday: 'long', day: 'numeric', month: 'long' })}</span>
-              <span><Clock size={15} aria-hidden="true" /> {fmt(startsAt, { hour: 'numeric', minute: '2-digit' })} Pakistan time · {mins} minutes</span>
+              <span><Clock size={15} aria-hidden="true" /> {fmt(startsAt, { hour: 'numeric', minute: '2-digit', hour12: true }).toUpperCase()} Pakistan time · {mins} minutes</span>
             </p>
             {c.notes ? <p className="cf-sub" style={{ whiteSpace: 'pre-line' }}>{c.notes as string}</p> : null}
             {c.status === 'cancelled' ? (
               <p className="cf-msg error" role="status">This class has been cancelled. Please check WhatsApp for the new time.</p>
             ) : (
-              <ClassJoin slug={slug} title={c.title as string} startsAt={startsAt} durationMins={mins} />
+              <ClassJoin slug={slug} title={c.title as string} startsAt={startsAt} durationMins={mins} hasRecording={Boolean(c.recordingUrl)} />
             )}
           </div>
         </div>

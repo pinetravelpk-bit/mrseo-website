@@ -1,10 +1,11 @@
 'use client';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { CalendarClock, Chrome, KeyRound, Mic, Radio, X } from 'lucide-react';
+import { CalendarClock, Chrome, KeyRound, Mic, PlayCircle, Radio, X } from 'lucide-react';
 
 /* "Join Live Class" in the menu: opens a window listing the upcoming online classes,
    with the time, a countdown and the join link. Data loads only when it is opened. */
 
+type Recording = { title: string; course: string | null; startsAt: string; url: string };
 type LiveClass = { title: string; course: string | null; courseSlug: string | null; startsAt: string; durationMins: number; url: string; live: boolean };
 const OPEN_EVENT = 'mrseo:open-live-class';
 
@@ -53,6 +54,7 @@ function Illustration() {
 export default function LiveClassMenu({ wa }: { wa: string }) {
   const dlg = useRef<HTMLDialogElement>(null);
   const [classes, setClasses] = useState<LiveClass[] | null>(null);
+  const [recordings, setRecordings] = useState<Recording[]>([]);
   const [error, setError] = useState(false);
   const [now, setNow] = useState(() => Date.now());
 
@@ -60,7 +62,7 @@ export default function LiveClassMenu({ wa }: { wa: string }) {
     setError(false);
     fetch('/api/classes-upcoming/')
       .then((r) => r.json())
-      .then((d: { classes: LiveClass[] }) => setClasses(d.classes))
+      .then((d: { classes: LiveClass[]; recordings?: Recording[] }) => { setClasses(d.classes); setRecordings(d.recordings ?? []); })
       .catch(() => setError(true));
   }, []);
 
@@ -163,6 +165,27 @@ export default function LiveClassMenu({ wa }: { wa: string }) {
               </ul>
             )}
           </div>
+
+          {recordings.length > 0 ? (
+            <div className="lc-recs">
+              <h3><PlayCircle size={18} aria-hidden="true" /> Recorded sessions</h3>
+              <p>Missed a class? Watch the recording with the access code of that class.</p>
+              <ul>
+                {recordings.map((r) => (
+                  <li key={r.url}>
+                    <a href={r.url}>
+                      <span className="lc-rec-play" aria-hidden="true"><PlayCircle size={20} /></span>
+                      <span className="lc-rec-text">
+                        <strong>{r.title}</strong>
+                        <small>{r.course ? `${r.course} · ` : ''}{pk(r.startsAt, { day: 'numeric', month: 'short', year: 'numeric' })}</small>
+                      </span>
+                      <span className="lc-rec-go">Watch</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
 
           <ul className="lc-tips">
             <li><Chrome size={18} aria-hidden="true" /> Use Chrome on a laptop or phone</li>

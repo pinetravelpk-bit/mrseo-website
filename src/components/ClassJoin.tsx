@@ -2,9 +2,10 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import { FormMessage } from './ContactForm';
 import ClassRoom, { type RoomPass } from './ClassRoom';
+import ClassRecording from './ClassRecording';
 
 /* Student join form: name, phone and access code, then the class opens inside the site. */
-export default function ClassJoin({ slug, title, startsAt, durationMins }: { slug: string; title: string; startsAt: string; durationMins: number }) {
+export default function ClassJoin({ slug, title, startsAt, durationMins, hasRecording = false }: { slug: string; title: string; startsAt: string; durationMins: number; hasRecording?: boolean }) {
   const [busy, setBusy] = useState(false);
   const [pass, setPass] = useState<RoomPass | null>(null);
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
@@ -44,6 +45,7 @@ export default function ClassJoin({ slug, title, startsAt, durationMins }: { slu
   }
 
   if (pass) return <ClassRoom pass={pass} title={title} onLeave={() => setPass(null)} />;
+  if (now !== null && now > endsAt && hasRecording) return <ClassRecording slug={slug} />;
   if (now !== null && now > endsAt) return <p className="cf-msg error" role="status">This class has ended. Please ask on WhatsApp for the recording or the next class link.</p>;
   const early = now !== null && now < opensAt;
 

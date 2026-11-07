@@ -57,6 +57,16 @@ export const OnlineClasses: CollectionConfig = {
       ],
     },
     { name: 'notes', type: 'textarea', label: 'Note for students', admin: { description: 'Shown on the join page, e.g. what to prepare or bring.' } },
+    {
+      name: 'recordingUrl',
+      type: 'text',
+      label: 'Recording link',
+      admin: {
+        description:
+          'After the class: upload the recording to YouTube as "Unlisted" (or Google Drive, "Anyone with the link") and paste the link here. Students watch it on the class page with the same access code.',
+      },
+      validate: (v: unknown) => !v || /^https:\/\/\S+$/.test(String(v)) || 'Paste a full link starting with https://',
+    },
     { name: 'studentLink', type: 'text', label: 'Student join link (send this)', admin: { readOnly: true, position: 'sidebar', description: 'Generated when you save.' } },
     { name: 'teacherLink', type: 'text', label: 'Teacher link (open to teach)', admin: { readOnly: true, position: 'sidebar' } },
     { name: 'slug', type: 'text', unique: true, index: true, admin: { readOnly: true, position: 'sidebar' } },
