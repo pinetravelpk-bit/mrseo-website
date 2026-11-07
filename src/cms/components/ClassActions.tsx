@@ -63,7 +63,7 @@ Access code: *${f.code ?? ''}*`;
       <p style={{ margin: '6px 0 0', opacity: 0.8, fontSize: 13 }}>
         {f.recording
           ? '✓ Recording added. Students can watch it on the same link with the same code after the class ends.'
-          : 'Recording: in the class click "How to record" at the top. After the class, upload the file to YouTube as Unlisted and paste the link in "Recording link" below.'}
+          : 'Recording: in the class click the red Record button at the top (laptop, Chrome or Edge). Click Stop at the end and the video downloads to your computer. Upload it to YouTube as Unlisted and paste the link in "Recording link" below.'}
       </p>
     </div>
   );

@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import ClassRecorder, { type RecorderHandle } from './ClassRecorder';
 
 /* Runs a live class inside mrseo.pk using our own classroom server (class.mrseo.pk). */
 
@@ -12,7 +13,7 @@ declare global {
 
 // No cameras: voice, screen sharing and chat only (keeps the server light).
 const STUDENT_TOOLS = ['microphone', 'chat', 'raisehand', 'reactions', 'participants-pane', 'settings', 'fullscreen', 'hangup'];
-const TEACHER_TOOLS = ['microphone', 'desktop', 'shareaudio', 'chat', 'raisehand', 'reactions', 'participants-pane', 'security', 'mute-everyone', 'recording', 'settings', 'fullscreen', 'hangup'];
+const TEACHER_TOOLS = ['microphone', 'desktop', 'shareaudio', 'chat', 'raisehand', 'reactions', 'participants-pane', 'security', 'mute-everyone', 'settings', 'fullscreen', 'hangup'];
 
 function loadScript(src: string) {
   return new Promise<void>((resolve, reject) => {
@@ -30,7 +31,7 @@ export default function ClassRoom({ pass, title, teacher = false, onLeave }: { p
   const box = useRef<HTMLDivElement>(null);
   const api = useRef<JitsiApi | null>(null);
   const [state, setState] = useState<'loading' | 'live' | 'ended' | 'error'>('loading');
-  const [recHelp, setRecHelp] = useState(false);
+  const recorder = useRef<RecorderHandle>(null);
 
   useEffect(() => {
     let gone = false;
@@ -57,7 +58,7 @@ export default function ClassRoom({ pass, title, teacher = false, onLeave }: { p
             disableInviteFunctions: true,
             enableClosePage: false,
             toolbarButtons: teacher ? TEACHER_TOOLS : STUDENT_TOOLS,
-            localRecording: { disable: !teacher },
+            localRecording: { disable: true },
           },
           interfaceConfigOverwrite: {
             APP_NAME: 'MrSEO Classroom',
@@ -82,7 +83,9 @@ export default function ClassRoom({ pass, title, teacher = false, onLeave }: { p
     };
   }, [pass, title, teacher]);
 
-  const leave = () => {
+  const leave = async () => {
+    // Save any recording before leaving.
+    if (recorder.current?.recording()) await recorder.current.stop();
     if (api.current) api.current.executeCommand('hangup');
     else onLeave?.();
   };
@@ -95,28 +98,11 @@ export default function ClassRoom({ pass, title, teacher = false, onLeave }: { p
           <strong>MrSEO Classroom</strong>
           <span>{title}{teacher ? ' · You are the teacher' : ''}</span>
         </div>
-        {teacher && state === 'live' ? (
-          <button type="button" className="classroom-help" onClick={() => setRecHelp((v) => !v)} aria-expanded={recHelp}>
-            <span className="lc-dot" aria-hidden="true" /> How to record
-          </button>
-        ) : null}
+        {teacher && state === 'live' ? <ClassRecorder ref={recorder} title={title} /> : null}
         {state === 'live' || state === 'loading' ? (
           <button type="button" className="classroom-leave" onClick={leave}>Leave class</button>
         ) : null}
       </div>
-      {teacher && recHelp ? (
-        <div className="classroom-tip" role="note">
-          <strong>Record this class (saved to your computer)</strong>
-          <ol>
-            <li>Use Chrome or Edge on a laptop. In the classroom toolbar, click <b>Record</b> (or <b>⋯ More</b> → <b>Start recording</b>).</li>
-            <li>Click <b>Start recording</b>. When Chrome asks what to share, pick <b>this tab</b> and keep <b>Also share tab audio</b> on.</li>
-            <li>Teach as normal. Your voice, the students and your shared screen are recorded.</li>
-            <li>At the end click <b>Stop recording</b>. The video file downloads to your computer.</li>
-            <li>Upload it to YouTube as <b>Unlisted</b>, then paste the link in admin → this class → <b>Recording link</b>. Students watch it with their access code.</li>
-          </ol>
-          <button type="button" className="btn btn-o btn-sm" onClick={() => setRecHelp(false)}>Got it</button>
-        </div>
-      ) : null}
       <div className="classroom-stage">
         {state === 'ended' || state === 'error' ? (
           <div className="classroom-msg">
