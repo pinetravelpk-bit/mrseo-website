@@ -52,6 +52,8 @@ set_env JWT_ALLOW_EMPTY 0
 set_env ENABLE_AUTO_OWNER 0
 set_env XMPP_MUC_MODULES token_affiliation
 set_env ENABLE_LOBBY 1
+# No "End meeting for all": a host leaving never closes the class for students.
+set_env ENABLE_END_CONFERENCE false
 set_env ENABLE_BREAKOUT_ROOMS 1
 set_env ENABLE_WELCOME_PAGE 0
 set_env ENABLE_CLOSE_PAGE 0

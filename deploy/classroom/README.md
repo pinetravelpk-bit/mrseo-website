@@ -8,6 +8,7 @@ Only people the website lets in can join: the website signs a short-lived pass f
 
 - Jitsi runs in Docker from `/opt/classroom` (docker-jitsi-meet release), settings in `/opt/classroom/.env`,
   runtime config in `/opt/classroom-cfg` (owned by uid 1000).
+- "End meeting for all" is switched off (`ENABLE_END_CONFERENCE=false`), so a host leaving never ends the class.
 - Memory is capped (JVB 640 MB heap, Jicofo 320 MB, container limits in `docker-compose.override.yml`).
 - The web container listens on `127.0.0.1:8100`; host nginx serves `class.mrseo.pk`
   (`/etc/nginx/sites-available/class.mrseo.pk`). Audio and screen share use UDP 10000 directly.
